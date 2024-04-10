@@ -169,7 +169,7 @@
 // const paddings = ['1px', '4px', '66px', '88px', '34px', '61px'];
 
 // const getEmails = (item, index, array) => {
-//     console.log(item, index, array); // string
+//     console.log(item, index, array); // str cheing
 // }
 
 // names.forEach((item, index, array) => {
