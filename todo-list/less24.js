@@ -32,20 +32,6 @@ deleteLastButton.addEventListener('click', () => {
 
 const checkboxes = document.querySelectorAll('.bottom__block-check');
 
-function clickCheck(checkbox) {
-  const container = checkbox.parentElement;
-  const todoText = container.querySelector('.bottom_block-first__text');
-
-  checkbox.addEventListener('click', () => {
-    if (checkbox.checked) {
-      container.style.backgroundColor = 'gray'; 
-      todoText.style.textDecoration = 'line-through'; 
-    } else {
-      container.style.backgroundColor = '';
-      todoText.style.textDecoration = 'none';
-    }
-  });
-}
 
 checkboxes.forEach(clickCheck)
 
@@ -79,6 +65,20 @@ function deleteToDo(event) {
     ul.removeChild(currentLi);
 }
 
+function clickCheck(checkbox) {
+  const container = checkbox.parentElement;
+  const todoText = container.querySelector('.bottom_block-first__text');
+
+  checkbox.addEventListener('click', () => {
+    if (checkbox.checked) {
+      container.style.backgroundColor = 'gray'; 
+      todoText.style.textDecoration = 'line-through'; 
+    } else {
+      container.style.backgroundColor = '';
+      todoText.style.textDecoration = 'none';
+    }
+  });
+}
 
 ul.addEventListener('click', (event) => {
     console.log(event.target)
@@ -87,5 +87,9 @@ ul.addEventListener('click', (event) => {
     }
 });
 
-
+ul.addEventListener('click', (checkbox) => {
+  if (checkbox.target.classList.contains('bottom__block-check')) {
+    clickCheck(checkbox.target); 
+  }
+});
 
