@@ -129,6 +129,7 @@ if (todoList) {
   `;
 
     ul.append(todoItem);
+    ++uniqueIdItem;
   });
 }
 
