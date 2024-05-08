@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/index.scss">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container container-header">
+            <div class="header__contant">
+                <img class="header__contant-logo" src="./img/Wildberries.png" alt="">
+                <input class="header__contant-input" type="text" placeholder="Поиск...">
+                <button class="header__contant-btn">Корзина</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="mySlider" class="splide" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+                  <div class="splide__list">
+                      <div class="splide__slide"><img src="./img/slide1.jpg" alt=""></div>
+                      <div class="splide__slide"><img src="./img/slide2.jpg" alt=""></div>
+                      <div class="splide__slide"><img src="./img/product1.jpg" alt=""></div>
+                      <div class="splide__slide"><img src="./img/product1.jpg" alt=""></div>
+                      <div class="splide__slide"><img src="./img/product1.jpg" alt=""></div>
+                  </div>
+            </div>
+          </section>
+        <section class="card">
+            <div class="container">
+                <div class="card__product">
+                    <h2 class="card__product-title">Хиты продаж</h2>
+                    <div class="card__product-content">
+                        <div class="content">
+                            <div class="content__product">
+                                <div class="content__product-discount">-10%</div>
+                                <img src="./img/product1.jpg" alt="Product Image" class="content__product-image">
+                                <button class="content__product-view"></button>
+                                <button class="content__product-add"></button>
+                            </div>
+                            <div class="content__description">
+                                <div class="content__description-price">
+                                    <span class="content__description-price_new">155 р</span>
+                                    <span class="content__description-price_old">170 р</span>
+                                </div>
+                                    <span class="content__description__product">Костюм</span>
+                            </div>  
+                        </div>
+                        <div class="content">
+                            <div class="content__product">
+                                <div class="content__product-discount">-20%</div>
+                                <img src="./img/product2.jpg" alt="Product Image" class="content__product-image">
+                                <button class="content__product-view"></button>
+                                <button class="content__product-add"></button>
+                            </div>
+                            <div class="content__description">
+                                <div class="content__description-price">
+                                    <span class="content__description-price_new">160 р</span>
+                                    <span class="content__description-price_old">200 р</span>
+                                </div>
+                                    <span class="content__description__product">Кроссовки</span>
+                            </div>  
+                        </div>
+                        <div class="content">
+                            <div class="content__product">
+                                <div class="content__product-discount">-30%</div>
+                                <img src="./img/product3.jpg" alt="Product Image" class="content__product-image">
+                                <button class="content__product-view"></button>
+                                <button class="content__product-add"></button>
+                            </div>
+                            <div class="content__description">
+                                <div class="content__description-price">
+                                    <span class="content__description-price_new">70 р</span>
+                                    <span class="content__description-price_old">100 р</span>
+                                </div>
+                                    <span class="content__description__product">Светильник</span>
+                            </div>  
+                        </div>
+                        <div class="content">
+                            <div class="content__product">
+                                <div class="content__product-discount">-50%</div>
+                                <img src="./img/product4.jpg" alt="Product Image" class="content__product-image">
+                                <button class="content__product-view"></button>
+                                <button class="content__product-add"></button>
+                            </div>
+                            <div class="content__description">
+                                <div class="content__description-price">
+                                    <span class="content__description-price_new">20 р</span>
+                                    <span class="content__description-price_old">40 р</span>
+                                </div>
+                                    <span class="content__description__product">Набор</span>
+                            </div>  
+                        </div>
+                        <div class="content">
+                            <div class="content__product">
+                                <div class="content__product-discount">-40%</div>
+                                <img src="./img/product5.jpg" alt="Product Image" class="content__product-image">
+                                <button class="content__product-view"></button>
+                                <button class="content__product-add"></button>
+                            </div>
+                            <div class="content__description">
+                                <div class="content__description-price">
+                                    <span class="content__description-price_new">12 р</span>
+                                    <span class="content__description-price_old">20 р</span>
+                                </div>
+                                    <span class="content__description__product">Точилка</span>
+                            </div>  
+                        </div>
+                        <div class="content">
+                            <div class="content__product">
+                                <div class="content__product-discount">-10%</div>
+                                <img src="./img/product6.jpg" alt="Product Image" class="content__product-image">
+                                <button class="content__product-view"></button>
+                                <button class="content__product-add"></button>
+                            </div>
+                            <div class="content__description">
+                                <div class="content__description-price">
+                                    <span class="content__description-price_new">126 р</span>
+                                    <span class="content__description-price_old">140 р</span>
+                                </div>
+                                    <span class="content__description__product">Худи</span>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script src="./scripts/slider.js"></script>
+</html>
