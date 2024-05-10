@@ -232,7 +232,7 @@ export const handleClickShowComplited = (ul) => {
 };
 
 fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(response => response.json()) // json - преобразование из json, text - преобрахование к тексту, blob - бинарный тип данных
+    .then(response => response.json())
     .then(response => {
         const ul = document.querySelector('.todos');
 
