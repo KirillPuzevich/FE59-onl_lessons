@@ -30,3 +30,9 @@
 .splide__pagination__page.is-active{
   background: purple;
 }
+
+@media (max-width: 1250px){
+  .splide__slide img{
+    height: 400px;
+  }
+}
