@@ -6,7 +6,7 @@ import {
     searchField, 
     showAll, 
     showCompleted
-} from "./lesson29.js";
+} from "./lesson30.js";
 
 const ul = document.querySelector('.bottom_block');
 const handleClickInput = document.querySelector('.bottom__block-items-search');
