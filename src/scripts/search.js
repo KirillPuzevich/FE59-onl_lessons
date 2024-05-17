@@ -1,1 +1,1 @@
-const handleClickInput = document.querySelector('.header__contant-input'
+const handleClickInput = document.querySelector('.header__contant-input')
