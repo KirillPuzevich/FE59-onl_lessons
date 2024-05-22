@@ -133,11 +133,28 @@
         </section>
         <section class="modal">
                 <button class="close">x</button>
-                <img id="modal-img" class="modal-content">
+                <img id="modal__img" class="modal__content">
         </section>
+    <!-- Модальное окно корзины -->
+    <section class="card__modal">
+        <div class="card__modal-show">
+            <div class="card__modal-header">
+                <h2>Корзина</h2>
+                <button class="clear__card">Очистить корзину</button>
+            </div>
+            <div class="card__modal-content">
+            </div>
+            <div class="card__modal-footer">
+                <span>Итого: <span class="total__amount">0</span> рублей</span>
+            </div>
+            <button class="close__card-modal">Закрыть</button>
+        </div>
+    </section>
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <script src="./scripts/slider.js"></script>
 <script src="./scripts/modal.js"></script>
+<script src="./scripts/search.js"></script>
+<script src="./scripts/cardModal.js"></script>
 </html>
