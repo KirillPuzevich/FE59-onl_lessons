@@ -1,0 +1,15 @@
+.alert{
+    display: flex;
+    width: 200px;
+    margin: 10px;
+}
+
+.alert-btn{
+    border-radius: 50%;
+    padding: 0 3px;
+    margin-left: auto;
+}
+
+p{
+    margin-left: 15px;
+}

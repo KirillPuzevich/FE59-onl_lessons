@@ -1,0 +1,12 @@
+.menu{
+    background-color: blue;
+    padding: 30px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+img{
+    width: 24px;
+    height: 24px;
+}
