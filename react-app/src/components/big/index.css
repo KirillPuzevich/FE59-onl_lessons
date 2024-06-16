@@ -1,0 +1,52 @@
+.big {
+    display: flex; 
+    position: relative;
+    flex-direction: column;
+  }
+  
+  .big__content {
+    display: flex;
+    flex-direction: row; 
+    margin-left: 15px;
+  }
+
+  .big__date{
+    margin: 0;
+  }
+  
+  .big__info {
+    margin-top: 10px; 
+    width: 300px; 
+    margin-right: 10px;
+  }
+  
+  .big__title{
+    margin-bottom: 10px;
+  }
+  
+  .big__img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .big__text{
+    margin-left: 0px;
+  }
+  
+  .big__img-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+
+  .big__img-container_first{
+    display: flex;
+    gap: 10px;
+  }
+  
+  .big__author {
+    position: absolute; 
+    bottom: 0; 
+  }
