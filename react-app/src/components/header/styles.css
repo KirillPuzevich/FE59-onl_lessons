@@ -1,0 +1,42 @@
+
+.header {
+    width: 100%;
+    background-color: #daeeee;
+}
+    .header__wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px;
+    }
+
+    .header__log {
+        width: 25px;
+        height: 25px;
+      }
+  
+    .header__list {
+      display: flex;
+      align-items: center;
+    }
+  
+    .header__item {
+      margin-right: 15px;
+      
+    }
+  
+    .header__item:last-child {
+      margin-right: 0;
+    }
+  
+    .header__link {
+      color: black;
+      background-color: inherit;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  
+    
+  

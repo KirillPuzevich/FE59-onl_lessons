@@ -4,6 +4,13 @@
 /node_modules
 /.pnp
 .pnp.js
+/small
+/title
+/menu
+/medium
+/big
+/small
+/alert
 
 # testing
 /coverage

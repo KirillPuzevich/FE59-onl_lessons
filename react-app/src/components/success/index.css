@@ -1,0 +1,41 @@
+.success{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.success__btn{
+    cursor: pointer;
+    border: 0;
+    background-color: #fff;
+}
+
+.success__wrapper{
+    width: 400px;
+    padding: 25px;
+    border: 1px solid;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.success__title {
+    margin-bottom: 25px;
+}
+
+.success__content{
+    margin-bottom: 15px;
+}
+
+.success__content_text{
+    font-size: 18px;
+}
+
+.success__btn_complet{
+    width: 100%;
+    background-color: darkblue;
+    padding: 15px;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+}
