@@ -37,6 +37,11 @@
       font-weight: bold;
       font-size: 18px;
     }
+
+    .header__link:hover{
+      color: blue;
+      transition: .3s;
+    }
   
     
   

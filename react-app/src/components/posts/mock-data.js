@@ -7,7 +7,7 @@ export const postsData = [
       text: "Lorem Ipsum is Lorem Ipsum and Lorem Ipsum is aute mud Lore maiore magna. Lorem Ipsum is Lorem Ipsum, Lorem Ips lorem temp tempus. Lorem IpsumLorem Ipsum is Lorem Ipsum and Lorem Ipsum is aute mud Lore maiore magna. Lorem Ipsum is Lorem Ipsum, Lorem Ips lorem temp tempus. Lorem Ipsum",
       date: "2021-12-12",
       lesson_num: 1,
-      title: "Lorem Ipsum is Lorem Ipsum Lorem Ipsum is Lorem Ipsum",
+      title: "1 Lorem Ipsum is Lorem Ipsum Lorem Ipsum is Lorem Ipsum",
       author: 4,
     },
     {
@@ -16,7 +16,7 @@ export const postsData = [
       text: "Lorem Ipsum is Lorem Ipsum and Lorem Ipsum is aute mud Lore maiore magna. Lorem Ipsum is Lorem Ipsum, Lorem Ips lorem temp tempus. Lorem IpsumLorem Ipsum is Lorem Ipsum and Lorem Ipsum is aute mud Lore maiore magna. Lorem Ipsum is Lorem Ipsum, Lorem Ips lorem temp tempus. Lorem Ipsum",
       date: "2021-12-12",
       lesson_num: 1,
-      title: "Lorem Ipsum is Lorem Ipsum Lorem Ipsum is Lorem Ipsum",
+      title: "2 Lorem Ipsum is Lorem Ipsum Lorem Ipsum is Lorem Ipsum",
       author: 5,
     },
     {
@@ -25,7 +25,7 @@ export const postsData = [
       text: "Lorem Ipsum is Lorem Ipsum and Lorem Ipsum is aute mud Lore maiore magna. Lorem Ipsum is Lorem Ipsum, Lorem Ips lorem temp tempus. Lorem IpsumLorem Ipsum is Lorem Ipsum and Lorem Ipsum is aute mud Lore maiore magna. Lorem Ipsum is Lorem Ipsum, Lorem Ips lorem temp tempus. Lorem Ipsum",
       date: "2021-12-12",
       lesson_num: 1,
-      title: "Lorem Ipsum is Lorem Ipsum Lorem Ipsum is Lorem Ipsum",
+      title: "3 Lorem Ipsum is Lorem Ipsum Lorem Ipsum is Lorem Ipsum",
       author: 3,
     },
     {

@@ -24,10 +24,19 @@ export const Header = ({
               <li className="header__item">
                 <button
                   className="header__link"
+                  onClick={() => setPage("signIn")}
+                >
+                  Sign In
+                </button>
+              </li>
+              <li className="header__item">
+                <button
+                  className="header__link"
                   onClick={() => setPage("signUp")}
                 >
                   Sign Up
                 </button>
+               
               </li>
             </ul>
           </nav>
