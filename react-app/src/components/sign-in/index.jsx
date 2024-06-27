@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { MyContext } from "../hooks/context.hook";
 import styles from "./index.css";
 
 export const SignIn = ({ setPage }) => {
@@ -17,8 +18,10 @@ export const SignIn = ({ setPage }) => {
     setValues({ email: "", pass: "" });
   };
 
+  const ctx = useContext(MyContext);
+
   return (
-    <div className="sign">
+    <div className={`sign  ${ctx.isBlackTheme ? "sign_dark" : ""}`}>
       <div className="container">
         <button className="sign__btn" onClick={() => setPage("home")}>
           Back to Home

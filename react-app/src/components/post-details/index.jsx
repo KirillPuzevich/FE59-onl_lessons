@@ -1,13 +1,16 @@
+import { useContext } from "react";
 import like from '../img/like.svg'
 import dislike from '../img/dislike.svg'
+import { MyContext } from "../hooks/context.hook";
 import save from '../img/save.png'
 import options from '../img/options.png'
 import styles from "./index.css";
 
 export const PostDetails = ({ post, setCurrentPost }) => {
+  const ctx = useContext(MyContext);
     console.log(post);
     return (
-      <div className="details">
+      <div className={`details  ${ctx.isBlackTheme ? "details_dark" : ""}`}>
         <button className="details__btn" onClick={() => setCurrentPost(null)}>Go back</button>
         <h1 className="details__title">{post.title}</h1>
         <div className='details__content'>

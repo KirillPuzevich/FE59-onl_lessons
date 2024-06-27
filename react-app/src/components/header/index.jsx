@@ -1,11 +1,19 @@
 import styles from "./styles.css";
+import { useRef } from "react";
+import { ModeButton } from "../mode-button";
 import logo from '../img/logo.svg';
 
 export const Header = ({
   setPage,
+  isBlackTheme,
+  handleChangeTheme,
 }) => {
+
+  const header = useRef(null);
+
   return (
-    <header className="header">
+    <header className={`header ${isBlackTheme ? "header_black" : ""}`}
+    ref={header}>
       <div className="container">
         <div className="header__wrapper">
         <div className="header__log">
@@ -36,7 +44,12 @@ export const Header = ({
                 >
                   Sign Up
                 </button>
-               
+              </li>
+              <li className="header__item">
+                <ModeButton
+                  isBlackTheme={isBlackTheme}
+                  handleChangeTheme={handleChangeTheme}
+                />
               </li>
             </ul>
           </nav>

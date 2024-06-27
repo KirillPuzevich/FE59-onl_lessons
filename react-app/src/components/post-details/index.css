@@ -7,6 +7,10 @@
     margin-bottom: 15px;
 }
 
+.details__btn:hover{
+  text-decoration: underline;
+}
+
 .details__title{
     margin-bottom: 15px;
 }
@@ -31,6 +35,7 @@
   .details__content-text {
     width: 80%;
     margin-bottom: 15px;
+    font-size: 22px;
   }
   
 .details__icon {
@@ -41,5 +46,19 @@
 
 .details__icon:last-child {
     margin-right: 0;
+}
+
+.details_dark{
+  background-color: rgb(73, 73, 73)
+}
+
+.details_dark .details__btn{
+  background-color: rgb(73, 73, 73);
+  color: white;
+}
+
+.details_dark .details__title,
+.details_dark .details__content-text{
+  color: white;
 }
  

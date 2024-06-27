@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { MyContext } from "../hooks/context.hook";
 import styles from "./index.css";
+
 
 export const SignUp = ({ setPage }) => {
   const [values, setValues] = useState({ name: "", email: "", pass: "", confPass: "" });
@@ -25,18 +27,20 @@ export const SignUp = ({ setPage }) => {
     setValues({ name:"", email: "", pass: "", confPass: "" });
   };
 
+  const ctx = useContext(MyContext);
+
   return (
-    <div className="sign">
+    <div className={`signs  ${ctx.isBlackTheme ? "signs_dark" : ""}`}>
       <div className="container">
-        <button className="sign__btn" onClick={() => setPage("home")}>
+        <button className="signs__btn" onClick={() => setPage("home")}>
           Back to Home
         </button>
-        <h1 className="sign__title">Sing Up </h1>
-        <div className="sign__wrapper">
+        <h1 className="signs__title">Sing Up </h1>
+        <div className="signs__wrapper">
          <label htmlFor="signName">Name</label>
           <input
             type="text"
-            className="sign__input"
+            className="signs__input"
             id="signName"
             placeholder="Your name"
             value={values.name}
@@ -45,7 +49,7 @@ export const SignUp = ({ setPage }) => {
           <label htmlFor="signEmail">Email</label>
           <input
             type="text"
-            className="sign__input"
+            className="signs__input"
             id="signEmail"
             placeholder="Your email"
             value={values.email}
@@ -54,7 +58,7 @@ export const SignUp = ({ setPage }) => {
           <label htmlFor="signPass">Password</label>
           <input
             type="text"
-            className="sign__input"
+            className="signs__input"
             id="signPass"
             placeholder="Password"
             value={values.pass}
@@ -63,21 +67,22 @@ export const SignUp = ({ setPage }) => {
           <label htmlFor="signConfPass">Confirm password</label>
           <input
             type="text"
-            className="sign__input"
+            className="signs__input"
             id="signConfPass"
             placeholder="Confirm password"
             value={values.confPass}
             onChange={handleChangeConfPass}
           />
-          <button className="sign__save" onClick={() => { handleSave(); setPage("regist"); }}>
+          <button className="signs__save" onClick={() => { handleSave(); setPage("regist");  }}>
             Sign Up
           </button>
-          <div className="sign__signup">
+          <div className="signs__signup">
             Already have an account?
-            <button className="sign__signup_btn" onClick={() => setPage("signIn")}> Sign In</button>
+            <button className="signs__signup_btn" onClick={() => setPage("signIn")}> Sign In</button>
           </div>
         </div>
       </div>
     </div>
+    
   );
 };

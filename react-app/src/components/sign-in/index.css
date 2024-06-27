@@ -1,19 +1,23 @@
-
 .sign {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 30px;
+    padding-top: 30px;
 }
-label{
+
+label {
     font-weight: bold;
     font-size: 18px;
 }
 
-.sign__btn{
+.sign__btn {
     cursor: pointer;
     border: 0;
     background-color: #fff;
+}
+
+.sign__btn:hover {
+    text-decoration: underline;
 }
 
 .sign__wrapper {
@@ -23,11 +27,11 @@ label{
     border-radius: 3px;
     margin-bottom: 20px;
 }
-  
+
 .sign__title {
     margin-bottom: 25px;
 }
-  
+
 .sign__input {
     border-radius: 5px;
     margin-bottom: 15px;
@@ -36,15 +40,19 @@ label{
     font-size: 16px;
 }
 
-.sign__forgot{
+.sign__forgot {
     border: 0;
     background-color: #fff;
     margin-bottom: 30px;
     cursor: pointer;
     font-size: 16px;
 }
-  
-.sign__save{
+
+.sign__forgot:hover{
+    text-decoration: underline;
+}
+
+.sign__save {
     width: 100%;
     background-color: darkblue;
     padding: 15px;
@@ -54,14 +62,50 @@ label{
     cursor: pointer;
 }
 
-.sign__signup{
+.sign__signup {
     display: flex;
     justify-content: center;
 }
 
-.sign__signup_btn{
+.sign__signup_btn {
     border: 0;
     background-color: #fff;
     color: blue;
     cursor: pointer;
 }
+
+.sign__signup_btn:hover{
+    text-decoration: underline;
+}
+
+.sign_dark .sign__btn,
+.sign_dark .sign__forgot{
+    background-color: rgb(73, 73, 73);
+    color: white;
+}
+
+.sign_dark .sign__title {
+    color: white;
+}
+
+.sign_dark .sign__wrapper{
+    background-color: rgb(73, 73, 73);
+}
+
+.sign_dark .sign__input{
+    border: none;
+}
+
+.sign_dark label{
+    color: white;
+}
+
+.sign_dark .sign__signup_btn{
+    background-color: rgb(73, 73, 73);
+    color: rgb(0, 0, 52);
+}
+
+.sign_dark .sign__signup{
+    color: white;
+}
+

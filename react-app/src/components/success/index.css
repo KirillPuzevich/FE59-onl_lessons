@@ -2,13 +2,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 30px;
+    padding-top: 30px;
 }
 
 .success__btn{
     cursor: pointer;
     border: 0;
     background-color: #fff;
+}
+
+.success__btn:hover {
+    text-decoration: underline;
 }
 
 .success__wrapper{
@@ -38,4 +42,18 @@
     border: 0;
     color: #fff;
     cursor: pointer;
+}
+
+.success_dark .success__btn{
+    background-color: rgb(73, 73, 73);
+    color: white;
+}
+
+.success_dark .success__wrapper{
+    background-color: rgb(73, 73, 73);
+}
+
+.success_dark .success__content_text,
+.success_dark .success__title{
+    color: white;
 }

@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import styles from "./index.css"
+import { MyContext } from "../hooks/context.hook";
 
 export const Registration = ({setPage}) =>{
+
+    const ctx = useContext(MyContext);
+
     return(
-        <div className="registration">
+        <div className={`registration ${ctx.isBlackTheme ? "registration_dark" : ""}`}>
             <div className="container">
                 <button className="registration__btn" onClick={() => setPage("home")}>
                  Back to Home
@@ -11,8 +16,7 @@ export const Registration = ({setPage}) =>{
                 <div className="registration__wrapper">
                     <div className="registration__content">
                         <p className="registration__content_text">Please activate your account with the activation</p>
-                        <p className="registration__content_text">Link in the email <b>example@gmail.com</b></p>
-                        <p className="registration__content_text">Please check your email</p>
+                        <p className="registration__content_text">Check your email</p>
                     </div>
                     <button className="registration__btn_complet" onClick={() => setPage("home")}>Go to home</button>
                 </div>

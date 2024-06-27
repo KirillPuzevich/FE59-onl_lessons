@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import styles from "./index.css"
+import { MyContext } from "../hooks/context.hook";
 
 export const Success = ({setPage}) =>{
+
+    const ctx = useContext(MyContext);
+
     return(
-        <div className="success">
+        <div className={`success ${ctx.isBlackTheme ? "success_dark" : ""}`}>
             <div className="container">
                 <button className="success__btn" onClick={() => setPage("home")}>
                  Back to Home
