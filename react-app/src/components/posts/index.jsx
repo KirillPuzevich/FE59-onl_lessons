@@ -8,14 +8,14 @@ import { PostDetails } from "../post-details/index.jsx";
 export const Posts = () => {
   const [posts, setPosts] = useState(postsData);
   const [currentPost, setCurrentPost] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchPost, setSearchPost] = useState("");
 
-  const isSearch = searchTerm === "";
+  const isSearch = searchPost === "";
 
   const ctx = useContext(MyContext);
 
   const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+    setSearchPost(event.target.value);
   };
   
   return (
@@ -34,7 +34,7 @@ export const Posts = () => {
               <input
                   type="text"
                   placeholder="Поиск"
-                  value={searchTerm}
+                  value={searchPost}
                   onChange={handleSearch}
               />
             </div>
@@ -42,7 +42,7 @@ export const Posts = () => {
         <div className="posts__wrapper" >
         {posts
         .filter((post) =>
-          post.title.toLowerCase().includes(searchTerm.toLowerCase())
+          post.title.toLowerCase().includes(searchPost.toLowerCase())
         )
         .map((item, index) => {
           let size = "large";
