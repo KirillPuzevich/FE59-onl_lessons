@@ -1,4 +1,5 @@
 import styles from "./styles.css";
+import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { ModeButton } from "../mode-button";
 import logo from '../img/logo.svg';
@@ -22,28 +23,19 @@ export const Header = ({
           <nav className="header__nav">
             <ul className="header__list">
               <li className="header__item">
-                <button
-                  className="header__link"
-                  onClick={() => setPage("blog")}
-                >
-                  Blog
-                </button>
+                <Link to="blog" className="header__link">
+                Blog
+                </Link>
               </li>
               <li className="header__item">
-                <button
-                  className="header__link"
-                  onClick={() => setPage("signIn")}
-                >
-                  Sign In
-                </button>
+              <Link to="signIn" className="header__link">
+                Sign In
+                </Link>
               </li>
               <li className="header__item">
-                <button
-                  className="header__link"
-                  onClick={() => setPage("signUp")}
-                >
-                  Sign Up
-                </button>
+              <Link to="signUp" className="header__link">
+                Sign Up
+                </Link>
               </li>
               <li className="header__item">
                 <ModeButton

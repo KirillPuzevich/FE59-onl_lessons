@@ -23,6 +23,8 @@ export const postsData = [
       lesson_num: 1,
       title: "Softline купил разработчика ПО для проверки розничных сетей",
       author: 4,
+      favorite: false,
+      popular: true,
     },
     {
       id: 2,
@@ -32,6 +34,8 @@ export const postsData = [
       lesson_num: 1,
       title: "Уязвимость в UEFI позволяет взламывать сотни моделей ПК на процессорах Intel",
       author: 5,
+      favorite: false,
+      popular: false,
     },
     {
       id: 3,
@@ -41,6 +45,8 @@ export const postsData = [
       lesson_num: 1,
       title: "Продавцы и перевозчики пообещали резкий взлет цен на электронику в ближайшие месяцы",
       author: 3,
+      favorite: true,
+      popular: true,
     },
     {
       id: 4,
@@ -50,6 +56,8 @@ export const postsData = [
       lesson_num: 1,
       title: "«Бургер Кинг» мигрировал с американской RPA-системы на российское ПО",
       author: 4,
+      favorite: true,
+      popular: false,
     },
     {
       id: 5,
@@ -59,6 +67,8 @@ export const postsData = [
       lesson_num: 1,
       title: "Правительственный дата-центр гигантской страны атакован и заблокирован",
       author: 5,
+      favorite: false,
+      popular: true,
     },
     {
       id: 6,
@@ -68,6 +78,8 @@ export const postsData = [
       lesson_num: 1,
       title: "Microsoft стала без спроса копировать информацию с ПК пользователей в свое облако. Россиян тоже касается. Как это отключить",
       author: 3,
+      favorite: false,
+      popular: false,
     },
     {
       id: 7,
@@ -77,6 +89,8 @@ export const postsData = [
       lesson_num: 1,
       title: "Nvidia пережила крупнейшее падение капитализации в истории",
       author: 4,
+      favorite: true,
+      popular: true,
     },
     {
       id: 8,
@@ -86,6 +100,8 @@ export const postsData = [
       lesson_num: 1,
       title: "«Яндекс» выпустил наушники лучше и в разы дешевле Airpods Max. Видео",
       author: 5,
+      favorite: true,
+      popular: false,
     },
     {
       id: 9,
@@ -95,6 +111,8 @@ export const postsData = [
       lesson_num: 1,
       title: "Зарубежный интернет-трафик в России вырос на треть",
       author: 3,
+      favorite: false,
+      popular: true,
     },
     {
       id: 10,
@@ -104,6 +122,8 @@ export const postsData = [
       lesson_num: 1,
       title: "Microsoft сломала приятную «фишку» Windows 10 и уже два месяца не может починить. Windows 11 тоже «захворала»",
       author: 5,
+      favorite: false,
+      popular: false,
     },
     {
       id: 11,
@@ -113,6 +133,8 @@ export const postsData = [
       lesson_num: 1,
       title: "McDonald's отказалась от приема заказов через ИИ. Он добавлял в мороженое бекон и отправлял клиентам наггетсы на сотни долларов",
       author: 3,
+      favorite: true,
+      popular: true,
     },
     {
         id: 12,
@@ -122,5 +144,7 @@ export const postsData = [
         lesson_num: 1,
         title: "Хакер взломал серверы Apple и получил исходные коды трех сервисов",
         author: 3,
+        favorite: false,
+        popular: true,
       },
   ];

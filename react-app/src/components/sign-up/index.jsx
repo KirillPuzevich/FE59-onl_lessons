@@ -1,9 +1,12 @@
 import { useState, useContext } from "react";
 import { MyContext } from "../hooks/context.hook";
 import styles from "./index.css";
+import { useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 export const SignUp = ({ setPage }) => {
+  const navigate = useNavigate();
   const [values, setValues] = useState({ name: "", email: "", pass: "", confPass: "" });
 
   const handleChangeName = (event) => {
@@ -27,14 +30,16 @@ export const SignUp = ({ setPage }) => {
     setValues({ name:"", email: "", pass: "", confPass: "" });
   };
 
+  const handleClickReg = () => {
+    navigate("/regist"); 
+  };
+
   const ctx = useContext(MyContext);
 
   return (
     <div className={`signs  ${ctx.isBlackTheme ? "signs_dark" : ""}`}>
       <div className="container">
-        <button className="signs__btn" onClick={() => setPage("home")}>
-          Back to Home
-        </button>
+      <Link to={"/"} className="signs__btn">Back to Home</Link>
         <h1 className="signs__title">Sing Up </h1>
         <div className="signs__wrapper">
          <label htmlFor="signName">Name</label>
@@ -73,12 +78,12 @@ export const SignUp = ({ setPage }) => {
             value={values.confPass}
             onChange={handleChangeConfPass}
           />
-          <button className="signs__save" onClick={() => { handleSave(); setPage("regist");  }}>
+          <button className="signs__save" onClick={() => { handleSave(); handleClickReg();  }}>
             Sign Up
           </button>
           <div className="signs__signup">
             Already have an account?
-            <button className="signs__signup_btn" onClick={() => setPage("signIn")}> Sign In</button>
+            <Link to={"/signIn"} className="signs__signup_btn">Sign In</Link>
           </div>
         </div>
       </div>

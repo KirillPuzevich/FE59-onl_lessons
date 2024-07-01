@@ -9,6 +9,7 @@
     cursor: pointer;
     border: 0;
     background-color: #fff;
+    text-decoration: none;
 }
 
 .registration__btn:hover {

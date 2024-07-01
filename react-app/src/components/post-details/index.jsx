@@ -1,17 +1,49 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import like from '../img/like.svg'
 import dislike from '../img/dislike.svg'
 import { MyContext } from "../hooks/context.hook";
 import save from '../img/save.png'
 import options from '../img/options.png'
 import styles from "./index.css";
+import { postsData } from "../posts/mock-data";
+import { useParams, useNavigate} from "react-router-dom";
+import { Spinner } from '../spinner';
 
-export const PostDetails = ({ post, setCurrentPost }) => {
+export const PostDetails = () => {
+  const { postId } = useParams();
+  const [post, setPost] = useState(null);
+  const navigate = useNavigate();
   const ctx = useContext(MyContext);
+
+
+  useEffect(() => {
+
+    fetch(`https://jsonplaceholder.typicode.com/todos/${postId}`)
+      .then((response) => response.json())
+
+      .then((res) => {
+        const currentPost = postsData.find((post) => post.id === +postId);
+
+        if (currentPost) {
+          setPost(currentPost);
+        } else {
+          navigate("/404");
+        }
+      })
+  }, []);
+
+  const handleClick = () => {
+    navigate(-1); 
+  };
+
+  if (!post) {
+    return <Spinner />;
+  }
+
     console.log(post);
     return (
       <div className={`details  ${ctx.isBlackTheme ? "details_dark" : ""}`}>
-        <button className="details__btn" onClick={() => setCurrentPost(null)}>Go back</button>
+        <button className="details__btn" onClick={handleClick} >Go back</button>
         <h1 className="details__title">{post.title}</h1>
         <div className='details__content'>
             <img className="details__content-img" src={post.image} alt="" />
