@@ -25,6 +25,9 @@ export const postsData = [
       author: 4,
       favorite: false,
       popular: true,
+      like: false,
+      dislike: false,
+      save: false,
     },
     {
       id: 2,
@@ -36,6 +39,9 @@ export const postsData = [
       author: 5,
       favorite: false,
       popular: false,
+      like: false,
+      dislike: false,
+      save: false,
     },
     {
       id: 3,
@@ -47,6 +53,9 @@ export const postsData = [
       author: 3,
       favorite: true,
       popular: true,
+      like: false,
+      dislike: false,
+      save: false,
     },
     {
       id: 4,
@@ -58,6 +67,9 @@ export const postsData = [
       author: 4,
       favorite: true,
       popular: false,
+      like: false,
+      dislike: false,
+      save: false,
     },
     {
       id: 5,
@@ -69,6 +81,9 @@ export const postsData = [
       author: 5,
       favorite: false,
       popular: true,
+      like: false,
+      dislike: false,
+      save: false,
     },
     {
       id: 6,
@@ -80,6 +95,9 @@ export const postsData = [
       author: 3,
       favorite: false,
       popular: false,
+      like: false,
+      dislike: false,
+      save: false,
     },
     {
       id: 7,
@@ -91,6 +109,9 @@ export const postsData = [
       author: 4,
       favorite: true,
       popular: true,
+      like: false,
+      dislike: false,
+      save: false,
     },
     {
       id: 8,
@@ -102,6 +123,9 @@ export const postsData = [
       author: 5,
       favorite: true,
       popular: false,
+      like: false,
+      dislike: false,
+      save: false,
     },
     {
       id: 9,
@@ -113,6 +137,9 @@ export const postsData = [
       author: 3,
       favorite: false,
       popular: true,
+      like: false,
+      dislike: false,
+      save: false,
     },
     {
       id: 10,
@@ -124,6 +151,9 @@ export const postsData = [
       author: 5,
       favorite: false,
       popular: false,
+      like: false,
+      dislike: false,
+      save: false,
     },
     {
       id: 11,
@@ -135,6 +165,9 @@ export const postsData = [
       author: 3,
       favorite: true,
       popular: true,
+      like: false,
+      dislike: false,
+      save: false,
     },
     {
         id: 12,
@@ -146,5 +179,8 @@ export const postsData = [
         author: 3,
         favorite: false,
         popular: true,
+        like: false,
+      dislike: false,
+      save: false,
       },
   ];

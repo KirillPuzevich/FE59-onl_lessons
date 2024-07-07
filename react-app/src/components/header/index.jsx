@@ -1,17 +1,14 @@
 import styles from "./styles.css";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { useSelector} from "react-redux";
 import { ModeButton } from "../mode-button";
 import logo from '../img/logo.svg';
 
-export const Header = ({
-  setPage,
-  isBlackTheme,
-  handleChangeTheme,
-}) => {
+export const Header = () => {
 
+  const isBlackTheme = useSelector(state => state.isBlackTheme);
   const header = useRef(null);
-
   return (
     <header className={`header ${isBlackTheme ? "header_black" : ""}`}
     ref={header}>
@@ -23,7 +20,7 @@ export const Header = ({
           <nav className="header__nav">
             <ul className="header__list">
               <li className="header__item">
-                <Link to="blog" className="header__link">
+                <Link to="blog/all" className="header__link">
                 Blog
                 </Link>
               </li>
@@ -39,8 +36,6 @@ export const Header = ({
               </li>
               <li className="header__item">
                 <ModeButton
-                  isBlackTheme={isBlackTheme}
-                  handleChangeTheme={handleChangeTheme}
                 />
               </li>
             </ul>

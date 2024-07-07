@@ -2,9 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import like from '../img/like.svg'
 import dislike from '../img/dislike.svg'
 import { MyContext } from "../hooks/context.hook";
-import save from '../img/save.png'
+import save from '../img/save.svg'
 import options from '../img/options.png'
+import {useDispatch} from "react-redux";
 import styles from "./index.css";
+import { CHANGE_LIKE_ACTION } from "../../actions";
+import { CHANGE_DISLIKE_ACTION } from "../../actions";
+import { CHANGE_SAVE_ACTION } from "../../actions";
 import { postsData } from "../posts/mock-data";
 import { useParams, useNavigate} from "react-router-dom";
 import { Spinner } from '../spinner';
@@ -36,6 +40,19 @@ export const PostDetails = () => {
     navigate(-1); 
   };
 
+  const dispatch = useDispatch();
+
+  const handleClickDislike= () =>{
+    dispatch(CHANGE_DISLIKE_ACTION(post.id));
+  }
+  const handleClickLike = () =>{
+    dispatch(CHANGE_LIKE_ACTION(post.id));
+  }
+
+  const handleClickSave= () =>{
+    dispatch(CHANGE_SAVE_ACTION(post.id));
+  }
+
   if (!post) {
     return <Spinner />;
   }
@@ -50,11 +67,23 @@ export const PostDetails = () => {
             <p className="details__content-text">{post.text}</p>
          <div className="details__actions">
             <div className="details__likes">
-                <img src={like} alt="Like" className="details__icon" />
-                <img src={dislike} alt="Dislike" className="details__icon" />
+                <img 
+                src={like}
+                 alt="Like" 
+                 className={`details__icon ${post.like ? "details__icon-active": ''}`} 
+                 onClick={handleClickLike} />
+                <img 
+                src={dislike}
+                alt="Dislike"
+                className={`details__icon ${post.dislike ? "details__icon-active": ''}`} 
+                onClick={handleClickDislike}/>
             </div>
             <div className="details__options">
-                <img src={save} alt="Save" className="details__icon" />
+                <img
+                src={save}
+                alt="Save"
+                className={`details__icon ${post.save ? "details__icon-active" : ""}`} 
+                onClick={handleClickSave} />
                 <img src={options} alt="Options" className="details__icon" />
             </div>
          </div>

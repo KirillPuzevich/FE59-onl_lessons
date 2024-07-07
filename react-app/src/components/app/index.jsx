@@ -11,28 +11,23 @@ import { MyContext } from "../hooks/context.hook";
 import { Registration } from '../registration';
 import { NotFound } from '../not-found';
 import { PostDetails } from '../post-details';
+import { useSelector} from "react-redux";
 
 
 export const App = () => {
 
-  const [isBlackTheme, setIsBlackTheme] = useState(false);
-
-  const handleChangeTheme = () => {
-    setIsBlackTheme((prevStat) => !prevStat);
-  };
+  const isBlackTheme = useSelector(state => state.isBlackTheme);
 
   return (
     <BrowserRouter>
     <MyContext.Provider value={{ isBlackTheme }}>
-      <Header  
-      isBlackTheme={isBlackTheme}
-      handleChangeTheme={handleChangeTheme}
+      <Header 
       />
       <main className={isBlackTheme ? "black-theme" : ""}>
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="blog" element={<Posts  isBlackTheme={isBlackTheme}/>}/>
-          <Route path="/blog/:postId" element={<PostDetails  isBlackTheme={isBlackTheme}/>}/>
+          <Route path="/blog/:category" element={<Posts  isBlackTheme={isBlackTheme}/>}/>
+          <Route path="/blog/:category/:postId" element={<PostDetails  isBlackTheme={isBlackTheme}/>}/>
           <Route path="signIn" element={<SignIn isBlackTheme={isBlackTheme}/>}/>
           <Route path="success" element={<Success isBlackTheme={isBlackTheme}/>}/>
           <Route path="signUp" element={<SignUp isBlackTheme={isBlackTheme}/>}/>

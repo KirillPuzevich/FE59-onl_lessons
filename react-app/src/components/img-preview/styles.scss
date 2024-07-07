@@ -1,0 +1,28 @@
+.modal__photo {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0000008b;
+  
+    &-wrapper {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: 60vw;
+        background-color: #fff;
+        padding: 25px;
+    }
+
+    &-button{
+        padding: 10px;
+        position: absolute;
+        top: 10px;
+        right: 10px; 
+    }
+
+    &-img{
+        width: 80%;
+    }
+  }

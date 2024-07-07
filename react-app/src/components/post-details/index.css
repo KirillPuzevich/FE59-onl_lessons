@@ -42,6 +42,16 @@
     width: 30px;
     height: 30px;
     margin-right: 10px;
+    cursor: pointer;
+    opacity: 0.2;
+}
+
+.details__icon:hover{
+  opacity: 0.5;
+}
+
+.details__icon-active{
+  opacity: 1;
 }
 
 .details__icon:last-child {
