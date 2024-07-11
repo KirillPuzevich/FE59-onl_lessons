@@ -9,8 +9,12 @@ import { PostDetails } from "../post-details/index.jsx";
 import { useNavigate, useParams} from "react-router-dom";
 import { PostPreview } from "../post-preview/index.jsx";
 import { ImgPreview } from "../img-preview/index.jsx";
-import { ADD_POSTS_ACTION } from "../../actions";
-import { CHANGE_TAB_ACTION } from "../../actions";
+import { 
+  ADD_POSTS_ACTION,
+  REQUEST_POSTS_ACTION,
+  CHANGE_TAB_ACTION,
+  ADD_MIDDLEWARE_ACTION,
+} from "../../actions";
 import { Spinner } from "../spinner/index.jsx";
 
 
@@ -51,15 +55,11 @@ export const Posts = () => {
 
   useEffect(() => {
     dispatch(CHANGE_TAB_ACTION(category))
-    fetch("https://jsonplaceholder.typicode.com/todos/")
-      .then((response) => response.json())
-      .then(({ results }) => {
-        dispatch(ADD_POSTS_ACTION(postsData));
-      })
-      .catch((e) => console.log(e));
+
+    dispatch(ADD_MIDDLEWARE_ACTION());
   }, []);
 
-  if (!posts){
+  if (posts.loading || !posts.loaded){
     return <Spinner/>
   }
   
@@ -81,38 +81,32 @@ export const Posts = () => {
             </div>
         </div>
         <div className={!isSearch ? "posts_wrapper_flex" : (tab === "all" ? "posts__wrapper" : "posts_wrapper_flex")}>
-        {posts
-        .filter((post) => {
-          if (tab === "all") {
-              return post;
-          } else if (tab === "favorites") {
-              return post.favorite;
-          } else if (tab === "popular") {
-              return post.popular;
+        {posts.content.reduce((result, post, index) => {
+    
+          if ((tab === "all") ||
+              (tab === "favorites" && post.favorite) ||
+              (tab === "popular" && post.popular)) {
+              
+              if (post.title.toLowerCase().includes(searchPost.toLowerCase())) {
+                  let size = "large";
+                  if (index > 5 && isSearch) {
+                      size = "small";
+                  }
+
+                  result.push(
+                      <Post
+                          post={post}
+                          img={post} 
+                          index={index}
+                          key={index}
+                          size={(tab === "favorites" || tab === "popular") ? "large" : size} 
+                      />
+                  );
+              }
           }
-          })
-        .filter((post) =>
-          {if (searchPost) {
-          return post.title.toLowerCase().includes(searchPost.toLowerCase())
-          } else {
-          return post
-          }
-          })
-        .map((item, index) => {
-          let size = "large";
-          if (index > 5 || !isSearch) {
-            size = "small";
-          }
-          return (
-            <Post
-              post={item}
-              img={item}
-              index={index}
-              key={index}
-              size={(tab === "favorites" || tab === "popular") ? "large" : size}
-            />
-          );
-        })}
+
+      return result; 
+      }, [])};
         </div>
       </div>
       {post && <PostPreview post={post}/>}

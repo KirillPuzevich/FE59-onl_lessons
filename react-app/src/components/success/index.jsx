@@ -24,7 +24,7 @@ export const Success = ({setPage}) =>{
                         <p className="success__content_text">Email confirmed</p>
                         <p className="success__content_text">Your registration is now completed!</p>
                     </div>
-                    <button className="success__btn_complet" onClick={() => {handleClickHome()}}>Go to home</button>
+                    <button className="success__btn_complet" onClick={handleClickHome}>Go to home</button>
                 </div>
             </div>
 

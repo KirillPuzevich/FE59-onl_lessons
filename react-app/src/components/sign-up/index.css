@@ -64,6 +64,11 @@ label{
     text-decoration: none;
 }
 
+.signs__error{
+    color: red;
+    font-size: 14px;
+}
+
 .signs__signup_btn:hover{
     text-decoration: underline;
 }

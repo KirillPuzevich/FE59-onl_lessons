@@ -3,11 +3,14 @@ import styles from "./index.css"
 import { MyContext } from "../hooks/context.hook";
 import { Link } from "react-router-dom";
 import { useNavigate} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-export const Registration = ({setPage}) =>{
+export const Registration = () =>{
     const navigate = useNavigate();
+    const location = useLocation();
     const ctx = useContext(MyContext);
-
+    
+    const { email } = location.state;
     const handleClickHome = () => {
         navigate("/"); 
       };
@@ -20,7 +23,7 @@ export const Registration = ({setPage}) =>{
                 <div className="registration__wrapper">
                     <div className="registration__content">
                         <p className="registration__content_text">Please activate your account with the activation</p>
-                        <p className="registration__content_text">Check your email</p>
+                        <p className="registration__content_text">Check your email {email}</p>
                     </div>
                     <button className="registration__btn_complet" onClick={() => {handleClickHome()}}>Go to home</button>
                 </div>

@@ -4,11 +4,15 @@ import {
     CHANGE_THEME, 
     ADD_IMG, 
     REMOVE_IMG, 
-    ADD_POSTS, 
+    RECEIVED_POSTS, 
     CHANGE_LIKE,
     CHANGE_DISLIKE,
     CHANGE_TAB,
-    CHANGE_SAVE,} 
+    CHANGE_SAVE,
+    REQUEST_POSTS,
+    POST_USER_DATA,
+    RECEIVED_USER_DATA,
+} 
     from '../actions'
 
 
@@ -16,8 +20,19 @@ const initialState = {
     isBlackTheme: false,
     post: null,
     img: null,
-    posts: null,
+    posts: {
+        content: [],
+        loading: false,
+        loaded: false,
+        error: null,
+    },
     tab:"all",
+    user: {
+        content: {},
+        loading: false,
+        loaded: false,
+        errors: {},
+    }
 };
 
 // const action = {
@@ -80,15 +95,44 @@ export const reducer = (state = initialState, action) => {
         }
     }
 
-    if(action.type === ADD_POSTS ){
+    if(action.type === REQUEST_POSTS ){
 
         console.log({
             ...state,
-            posts: action.payload,
+            // posts: action.payload,
+            posts: {
+                ...state.posts,
+                loading: true,
+            }
         })
         return {
             ...state,
-            posts: action.payload,
+            posts: {
+                ...state.posts,
+                loading: true,
+            }
+        }
+    }    
+
+    if(action.type === RECEIVED_POSTS ){
+
+        console.log({
+            ...state,
+            // posts: action.payload,
+            posts: {
+                ...state.posts,
+                content: action.payload,
+                loading: false,
+                loaded: true,
+            }
+        })
+        return {
+            ...state,
+            posts: {
+                content: action.payload,
+                loading: false,
+                loaded: true,
+            }
         }
     }
     if(action.type === CHANGE_LIKE){
@@ -154,6 +198,34 @@ export const reducer = (state = initialState, action) => {
             tab: action.tab,
         }
 
+    }
+
+    if(action.type === POST_USER_DATA ){
+
+        return {
+            ...state,
+            user: {
+                ...state.user,
+                loading: true
+            }
+        }
+    }
+
+    if(action.type === RECEIVED_USER_DATA ){
+
+        const isError = !action.user.id;
+
+        return {
+            ...state,
+            user: {
+                ...state.user,
+                content: isError ? {} : action.user,
+                loading: false,
+                loaded: true,
+                errors: isError ? action.user : {},
+                
+            }
+        }
     }
 
     return state
