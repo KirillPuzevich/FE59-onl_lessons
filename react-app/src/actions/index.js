@@ -13,6 +13,9 @@ export const CHANGE_SAVE = "CHANGE_SAVE";
 export const REQUEST_POSTS = "REQUEST_POSTS";
 export const POST_USER_DATA = "POST_USER_DATA";
 export const RECEIVED_USER_DATA = "RECEIVED_USER_DATA";
+export const REQUEST_POST = "REQUEST_POST";
+export const RECEIVED_POST = "RECEIVED_POST";
+
 
 
 
@@ -21,12 +24,16 @@ export const REMOVE_POST_ACTION = { type: REMOVE_POST};
 export const REMOVE_IMG_ACTION = { type: REMOVE_IMG};
 export const REQUEST_POSTS_ACTION = { type: REQUEST_POSTS};
 export const POST_USER_DATA_ACTION = { type: POST_USER_DATA};
+export const REQUEST_POST_ACTION = { type: REQUEST_POST };
+
+
 
 
 
 export const ADD_POST_ACTION = (post) => ({ type: ADD_POST, payload: post});
 export const ADD_IMG_ACTION = (img) => ({ type: ADD_IMG, payload: img});
 export const ADD_POSTS_ACTION = (posts) => ({ type: RECEIVED_POSTS, payload: posts});
+export const ADD_POST_DETAILS_ACTION = (postDet) => ({ type: RECEIVED_POST, payload: postDet});
 
 export const CHANGE_LIKE_ACTION = (id) => ({type: CHANGE_LIKE, id});
 export const CHANGE_DISLIKE_ACTION = (id) => ({type: CHANGE_DISLIKE, id});
@@ -34,6 +41,29 @@ export const CHANGE_SAVE_ACTION = (id) => ({type: CHANGE_SAVE, id});
 export const CHANGE_TAB_ACTION = (tab) => ({type: CHANGE_TAB, tab});
 export const ADD_USER_DATA_ACTION = (user) => ({type: RECEIVED_USER_DATA, user});
 
+
+export const POST_MIDDLEWARE_ACTION = (postId, navigate) => {
+  
+  return(dispatch) => {
+    dispatch(REQUEST_POST_ACTION)
+
+    const URL = `https://jsonplaceholder.typicode.com/todos/${postId}`
+
+    fetch(URL)
+    .then((response) => response.json())
+
+    .then((res) => {
+      const currentPost = postsData.find((post) => post.id === +postId);
+
+      if (currentPost) {
+        dispatch(ADD_POST_DETAILS_ACTION(currentPost));
+      } else {
+        navigate("/404");
+      }
+    })
+    .catch((error) => console.error(error));
+  }
+}
 
 export const ADD_MIDDLEWARE_ACTION = () => {
     return (dispatch) => {
@@ -50,12 +80,13 @@ export const ADD_MIDDLEWARE_ACTION = () => {
     }
 }
 
-export const SIGN_UP_MIDDLEWARE_ACTION = ({name, email, pass, group}) => {
+export const SIGN_UP_MIDDLEWARE_ACTION = ({name, email, pass, group}, navigate) => {
+
   return (dispatch) => {
   dispatch(POST_USER_DATA_ACTION);
 
   const URL = "https://studapi.teachmeskills.by/auth/users/";
-
+  
   fetch(URL, {
     method: 'POST',
     body: JSON.stringify({
@@ -69,6 +100,12 @@ export const SIGN_UP_MIDDLEWARE_ACTION = ({name, email, pass, group}) => {
     },
   })
     .then((response) => response.json())
-    .then((json) => dispatch(ADD_USER_DATA_ACTION(json)));
+    .then((json) => {
+      dispatch(ADD_USER_DATA_ACTION(json));
+
+      if (json.id) {
+        navigate("/regist", { state: { email, } });
+      }
+    });
 };
 }

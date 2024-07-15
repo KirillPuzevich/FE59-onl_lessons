@@ -12,6 +12,8 @@ import {
     REQUEST_POSTS,
     POST_USER_DATA,
     RECEIVED_USER_DATA,
+    REQUEST_POST,
+    RECEIVED_POST
 } 
     from '../actions'
 
@@ -32,7 +34,12 @@ const initialState = {
         loading: false,
         loaded: false,
         errors: {},
-    }
+    },
+    postDet:{
+        content: [],
+        loading: false,
+        loaded: false,
+    } 
 };
 
 // const action = {
@@ -99,7 +106,6 @@ export const reducer = (state = initialState, action) => {
 
         console.log({
             ...state,
-            // posts: action.payload,
             posts: {
                 ...state.posts,
                 loading: true,
@@ -114,11 +120,28 @@ export const reducer = (state = initialState, action) => {
         }
     }    
 
+    if(action.type === REQUEST_POST ){
+
+        console.log({
+            ...state,
+            postDet: {
+                ...state.postDet,
+                loading: true
+            }
+        })
+        return {
+            ...state,
+            postDet: {
+                ...state.postDet,
+                loading: true
+            }
+        };
+    } 
+
     if(action.type === RECEIVED_POSTS ){
 
         console.log({
             ...state,
-            // posts: action.payload,
             posts: {
                 ...state.posts,
                 content: action.payload,
@@ -129,11 +152,34 @@ export const reducer = (state = initialState, action) => {
         return {
             ...state,
             posts: {
+                ...state.posts,
                 content: action.payload,
                 loading: false,
                 loaded: true,
             }
         }
+    }
+
+    if(action.type === RECEIVED_POST ){
+
+        console.log({
+            ...state,
+            postDet: {
+                ...state.postDet,
+                content: action.payload,
+                loading: false,
+                loaded: true,
+            }
+        })
+        return {
+            ...state,
+            postDet: {
+                ...state.postDet,
+                content: action.payload,
+                loading: false,
+                loaded: true,
+            }
+        };
     }
     if(action.type === CHANGE_LIKE){
         console.log({

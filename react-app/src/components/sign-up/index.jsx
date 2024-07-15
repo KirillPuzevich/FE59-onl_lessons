@@ -38,8 +38,8 @@ export const SignUp = () => {
   };
 
   const handleSave = () => {
-    dispatch(SIGN_UP_MIDDLEWARE_ACTION(values));
-    navigate("/regist", { state: { email: values.email } });
+    dispatch(SIGN_UP_MIDDLEWARE_ACTION(values, navigate));
+    
   };
 
   const ctx = useContext(MyContext);

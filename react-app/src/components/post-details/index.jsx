@@ -12,6 +12,7 @@ import { CHANGE_SAVE_ACTION } from "../../actions";
 import { postsData } from "../posts/mock-data";
 import { useParams, useNavigate} from "react-router-dom";
 import { Spinner } from '../spinner';
+import { POST_MIDDLEWARE_ACTION } from "../../actions";
 
 export const PostDetails = () => {
   const { postId } = useParams();
@@ -22,19 +23,24 @@ export const PostDetails = () => {
 
   useEffect(() => {
 
-    fetch(`https://jsonplaceholder.typicode.com/todos/${postId}`)
-      .then((response) => response.json())
-
-      .then((res) => {
-        const currentPost = postsData.find((post) => post.id === +postId);
-
-        if (currentPost) {
-          setPost(currentPost);
-        } else {
-          navigate("/404");
-        }
-      })
+    dispatch(POST_MIDDLEWARE_ACTION(postId, navigate))
   }, []);
+
+  // useEffect(() => {
+
+  //   fetch(`https://jsonplaceholder.typicode.com/todos/${postId}`)
+  //     .then((response) => response.json())
+
+  //     .then((res) => {
+  //       const currentPost = postsData.find((post) => post.id === +postId);
+
+  //       if (currentPost) {
+  //         setPost(currentPost);
+  //       } else {
+  //         navigate("/404");
+  //       }
+  //     })
+  // }, []);
 
   const handleClick = () => {
     navigate(-1); 
@@ -56,8 +62,8 @@ export const PostDetails = () => {
   if (!post) {
     return <Spinner />;
   }
+  console.log(post)
 
-    console.log(post);
     return (
       <div className={`details  ${ctx.isBlackTheme ? "details_dark" : ""}`}>
         <button className="details__btn" onClick={handleClick} >Go back</button>
