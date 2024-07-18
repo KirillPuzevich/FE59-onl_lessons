@@ -1,4 +1,4 @@
-import { postsData } from "../components/posts/mock-data";
+import { postsData } from "../../components/posts/mock-data"
 
 export const CHANGE_THEME = "CHANGE_THEME";
 export const ADD_POST = "ADD_POST";
@@ -15,7 +15,7 @@ export const POST_USER_DATA = "POST_USER_DATA";
 export const RECEIVED_USER_DATA = "RECEIVED_USER_DATA";
 export const REQUEST_POST = "REQUEST_POST";
 export const RECEIVED_POST = "RECEIVED_POST";
-
+export const RECEIVED_TOKEN = "RECEIVED_TOKEN";
 
 
 
@@ -34,6 +34,7 @@ export const ADD_POST_ACTION = (post) => ({ type: ADD_POST, payload: post});
 export const ADD_IMG_ACTION = (img) => ({ type: ADD_IMG, payload: img});
 export const ADD_POSTS_ACTION = (posts) => ({ type: RECEIVED_POSTS, payload: posts});
 export const ADD_POST_DETAILS_ACTION = (postDet) => ({ type: RECEIVED_POST, payload: postDet});
+export const addTokenAction = (payload) => ({ type: RECEIVED_TOKEN, payload });
 
 export const CHANGE_LIKE_ACTION = (id) => ({type: CHANGE_LIKE, id});
 export const CHANGE_DISLIKE_ACTION = (id) => ({type: CHANGE_DISLIKE, id});
@@ -47,7 +48,7 @@ export const POST_MIDDLEWARE_ACTION = (postId, navigate) => {
   return(dispatch) => {
     dispatch(REQUEST_POST_ACTION)
 
-    const URL = `https://jsonplaceholder.typicode.com/todos/${postId}`
+    const URL = `https://studapi.teachmeskills.by/blog/posts/${postId}/`
 
     fetch(URL)
     .then((response) => response.json())
@@ -69,7 +70,7 @@ export const ADD_MIDDLEWARE_ACTION = () => {
     return (dispatch) => {
     dispatch(REQUEST_POSTS_ACTION);
 
-    const URL = "https://jsonplaceholder.typicode.com/todos/";
+    const URL = "https://studapi.teachmeskills.by//blog/posts/";
 
     fetch(URL)
       .then((response) => response.json())
@@ -80,7 +81,7 @@ export const ADD_MIDDLEWARE_ACTION = () => {
     }
 }
 
-export const SIGN_UP_MIDDLEWARE_ACTION = ({name, email, pass, group}, navigate) => {
+export const SIGN_UP_MIDDLEWARE_ACTION = ({name, email, password, group}, navigate) => {
 
   return (dispatch) => {
   dispatch(POST_USER_DATA_ACTION);
@@ -92,7 +93,7 @@ export const SIGN_UP_MIDDLEWARE_ACTION = ({name, email, pass, group}, navigate) 
     body: JSON.stringify({
       username: name,
       email,
-      password: pass,
+      password,
       course_group: group,
     }),
     headers: {
@@ -109,3 +110,61 @@ export const SIGN_UP_MIDDLEWARE_ACTION = ({name, email, pass, group}, navigate) 
     });
 };
 }
+
+export const activationEmailMiddlewareAction = (uid, token) => {
+  return (dispatch) => {
+
+    const URL = "https://studapi.teachmeskills.by/auth/users/activation/";
+    const data = { uid, token };
+
+    fetch(URL, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+      });
+  };
+};
+
+export const authorizationMiddlewareAction = (values) => {
+  return (dispatch) => {
+    const URL = "https://studapi.teachmeskills.by/auth/jwt/create/";
+
+    fetch(URL, {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        dispatch(addTokenAction(json));
+      });
+  };
+};
+
+
+export const getUserInfoMiddlewareAction = (token) => {
+  return (dispatch) => {
+    const URL = "https://studapi.teachmeskills.by/auth/users/me/";
+
+    fetch(URL, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        dispatch(ADD_USER_DATA_ACTION(json));
+      });
+  };
+};

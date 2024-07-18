@@ -3,11 +3,13 @@ import dislike from '../img/dislike.svg'
 import {useDispatch} from "react-redux";
 import save from '../img/save.svg'
 import options from '../img/options.png'
-import { CHANGE_LIKE_ACTION } from "../../actions";
-import { CHANGE_SAVE_ACTION } from "../../actions";
-import { CHANGE_DISLIKE_ACTION } from "../../actions";
 import like from '../img/like.svg'
-import { REMOVE_POST_ACTION } from "../../actions";
+import { 
+  REMOVE_POST_ACTION,
+  CHANGE_LIKE_ACTION,
+  CHANGE_SAVE_ACTION,
+  CHANGE_DISLIKE_ACTION,
+ } from "../../store/actions";
 
 export const PostPreview = ({post}) => {
 

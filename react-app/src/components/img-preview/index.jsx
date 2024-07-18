@@ -1,6 +1,6 @@
 import "./styles.scss";
 import {useDispatch} from "react-redux";
-import { REMOVE_IMG_ACTION } from "../../actions";
+import { REMOVE_IMG_ACTION } from "../../store/actions";
 
 export const ImgPreview = ({post}) => {
 

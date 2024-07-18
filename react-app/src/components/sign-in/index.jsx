@@ -3,25 +3,28 @@ import { MyContext } from "../hooks/context.hook";
 import styles from "./index.css";
 import { Link } from "react-router-dom";
 import { useNavigate} from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { authorizationMiddlewareAction } from "../../store/actions";
+// Pentqwq132
 
 export const SignIn = ({ setPage }) => {
 
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
-  const [values, setValues] = useState({ email: "", pass: "" });
+  const [values, setValues] = useState({ email: "", password: "" });
 
   const handleChangeEmail = (event) => {
     setValues((prevState) => ({ ...prevState, email: event.target.value }));
   };
 
   const handleChangePass = (event) => {
-    setValues((prevState) => ({ ...prevState, pass: event.target.value }));
+    setValues((prevState) => ({ ...prevState, password: event.target.value }));
   };
 
   const handleSave = () => {
-    console.log("Отправляем все данные в values на сервер: ", values);
-    setValues({ email: "", pass: "" });
+    dispatch(authorizationMiddlewareAction(values))
   };
 
   const handleClickSign = () => {
@@ -51,7 +54,7 @@ export const SignIn = ({ setPage }) => {
             className="sign__input"
             id="signPass"
             placeholder="Password"
-            value={values.pass}
+            value={values.password}
             onChange={handleChangePass}
           />
           <button className="sign__forgot">Forgot password?</button>

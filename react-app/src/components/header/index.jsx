@@ -1,20 +1,27 @@
 import styles from "./styles.css";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
-import { useSelector} from "react-redux";
 import { ModeButton } from "../mode-button";
+import { useDispatch, useSelector} from "react-redux";
 import logo from '../img/logo.svg';
+import person from '../img/person.svg';
+import { getUserInfoMiddlewareAction } from "../../store/actions";
 
 export const Header = () => {
 
+  const userToken = useSelector((state) => state.token);
+  const dispatch = useDispatch();
   const isBlackTheme = useSelector(state => state.isBlackTheme);
   const header = useRef(null);
+
+
+
   return (
     <header className={`header ${isBlackTheme ? "header_black" : ""}`}
     ref={header}>
       <div className="container">
         <div className="header__wrapper">
-        <div className="header__log">
+        <div className="header__logo">
             <img src={logo} alt="" />
           </div>
           <nav className="header__nav">
@@ -30,9 +37,15 @@ export const Header = () => {
                 </Link>
               </li>
               <li className="header__item">
-              <Link to="signUp" className="header__link">
-                Sign Up
+              {userToken ? (
+                <Link to="userPage" className="header__logo" >
+                  <img className="header__logo" src={person} alt="" />
                 </Link>
+                ) : (
+                <Link to="signUp" className="header__link" key="signup">
+                  Sign Up
+                </Link>
+                )}
               </li>
               <li className="header__item">
                 <ModeButton

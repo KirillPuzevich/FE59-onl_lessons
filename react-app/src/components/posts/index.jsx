@@ -14,7 +14,7 @@ import {
   REQUEST_POSTS_ACTION,
   CHANGE_TAB_ACTION,
   ADD_MIDDLEWARE_ACTION,
-} from "../../actions";
+} from "../../store/actions";
 import { Spinner } from "../spinner/index.jsx";
 
 
@@ -82,7 +82,6 @@ export const Posts = () => {
         </div>
         <div className={!isSearch ? "posts_wrapper_flex" : (tab === "all" ? "posts__wrapper" : "posts_wrapper_flex")}>
         {posts.content.reduce((result, post, index) => {
-    
           if ((tab === "all") ||
               (tab === "favorites" && post.favorite) ||
               (tab === "popular" && post.popular)) {
@@ -104,7 +103,6 @@ export const Posts = () => {
                   );
               }
           }
-
       return result; 
       }, [])};
         </div>

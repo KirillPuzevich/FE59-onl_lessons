@@ -13,7 +13,8 @@ import {
     POST_USER_DATA,
     RECEIVED_USER_DATA,
     REQUEST_POST,
-    RECEIVED_POST
+    RECEIVED_POST,
+    RECEIVED_TOKEN,
 } 
     from '../actions'
 
@@ -39,14 +40,12 @@ const initialState = {
         content: [],
         loading: false,
         loaded: false,
-    } 
+    },
+    token: null,
 };
 
-// const action = {
-//     type: "INCREMENT",
-// };
-
 export const reducer = (state = initialState, action) => {
+    console.log(state);
     if(action.type === CHANGE_THEME){
         return {
             ...state,
@@ -272,6 +271,14 @@ export const reducer = (state = initialState, action) => {
                 
             }
         }
+    }
+
+    if(action.type === RECEIVED_TOKEN ){
+
+        return {
+            ...state,
+            token: action.payload,
+          };
     }
 
     return state

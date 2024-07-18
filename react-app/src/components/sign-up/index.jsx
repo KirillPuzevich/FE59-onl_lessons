@@ -4,12 +4,12 @@ import styles from "./index.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { SIGN_UP_MIDDLEWARE_ACTION } from "../../actions";
+import { SIGN_UP_MIDDLEWARE_ACTION } from "../../store/actions";
 
 
 export const SignUp = () => {
   const navigate = useNavigate();
-  const [values, setValues] = useState({ name: "", email: "", pass: "", confPass: "", group: "", });
+  const [values, setValues] = useState({ name: "", email: "", password: "", confPass: "", group: "", });
 
   const user = useSelector((state) => state.user)
 
@@ -26,7 +26,7 @@ export const SignUp = () => {
   };
 
   const handleChangePass = (event) => {
-    setValues((prevState) => ({ ...prevState, pass: event.target.value }));
+    setValues((prevState) => ({ ...prevState, password: event.target.value }));
   };
 
   const handleChangeConfPass = (event) => {
@@ -80,7 +80,7 @@ export const SignUp = () => {
             className="signs__input"
             id="signPass"
             placeholder="Password"
-            value={values.pass}
+            value={values.password}
             onChange={handleChangePass}
           />
           {user.errors.password && (

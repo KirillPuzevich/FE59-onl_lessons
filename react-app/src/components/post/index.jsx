@@ -3,11 +3,13 @@ import like from '../img/like.svg'
 import { Link } from "react-router-dom";
 import { MyContext } from "../hooks/context.hook";
 import {useDispatch} from "react-redux";
-import { ADD_POST_ACTION } from "../../actions";
-import { ADD_IMG_ACTION } from "../../actions";
-import { CHANGE_LIKE_ACTION } from "../../actions";
-import { CHANGE_DISLIKE_ACTION } from "../../actions";
-import { CHANGE_SAVE_ACTION } from "../../actions";
+import { 
+  ADD_POST_ACTION,
+  ADD_IMG_ACTION,
+  CHANGE_LIKE_ACTION,
+  CHANGE_DISLIKE_ACTION,
+  CHANGE_SAVE_ACTION,
+ } from "../../store/actions";
 import dislike from '../img/dislike.svg'
 import save from '../img/save.svg'
 import options from '../img/options.png'

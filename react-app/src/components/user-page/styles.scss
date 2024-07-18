@@ -1,22 +1,22 @@
-.registration{
+.user{
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 30px;
 }
 
-.registration__btn{
+.user__btn{
     cursor: pointer;
     border: 0;
     background-color: #fff;
     text-decoration: none;
 }
 
-.registration__btn:hover {
+.user__btn:hover {
     text-decoration: underline;
 }
 
-.registration__wrapper{
+.user__wrapper{
     width: 400px;
     padding: 25px;
     border: 1px solid;
@@ -24,21 +24,19 @@
     margin-bottom: 20px;
 }
 
-.registration__title {
+.user__title {
     margin-bottom: 25px;
 }
 
-.registration__content{
+.user__content{
     margin-bottom: 15px;
 }
 
-.registration__content_text{
+.user__content_text{
     font-size: 18px;
 }
 
-
-
-.registration__btn_complet{
+.user_btn_complet{
     width: 100%;
     background-color: darkblue;
     padding: 15px;
@@ -47,16 +45,16 @@
     cursor: pointer;
 }
 
-.registration_dark .registration__btn{
+.user_dark .user__btn{
     background-color: rgb(73, 73, 73);
     color: white;
 }
 
-.registration_dark .registration__wrapper{
+.user_dark .user__wrapper{
     background-color: rgb(73, 73, 73);
 }
 
-.registration_dark .registration__content_text,
-.registration_dark .registration__title{
+.user_dark .user__content_text,
+.user .user__title{
     color: white;
 }
