@@ -9,10 +9,13 @@ import { getUserInfoMiddlewareAction } from "../../store/actions";
 
 export const Header = () => {
 
-  const userToken = useSelector((state) => state.token);
+  const user = useSelector((state) => state.user.content);
+  console.log(user)
   const dispatch = useDispatch();
   const isBlackTheme = useSelector(state => state.isBlackTheme);
   const header = useRef(null);
+
+  const isAuth = localStorage.getItem('isAuth');
 
 
 
@@ -37,7 +40,7 @@ export const Header = () => {
                 </Link>
               </li>
               <li className="header__item">
-              {userToken ? (
+              {isAuth ? (
                 <Link to="userPage" className="header__logo" >
                   <img className="header__logo" src={person} alt="" />
                 </Link>

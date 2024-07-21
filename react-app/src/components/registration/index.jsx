@@ -25,7 +25,7 @@ export const Registration = () =>{
                         <p className="registration__content_text">Please activate your account with the activation</p>
                         <p className="registration__content_text">Check your email <strong>{email}</strong></p>
                     </div>
-                    <button className="registration__btn_complet" onClick={() => {handleClickHome()}}>Go to home</button>
+                    <button className="registration__btn_complet" onClick={handleClickHome}>Go to home</button>
                 </div>
             </div>
 

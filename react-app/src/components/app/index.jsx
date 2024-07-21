@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styles from './styles.scss'
 import { Header } from '../header';
@@ -11,14 +11,26 @@ import { MyContext } from "../hooks/context.hook";
 import { Registration } from '../registration';
 import { NotFound } from '../not-found';
 import { PostDetails } from '../post-details';
-import { useSelector} from "react-redux";
+import { useSelector,useDispatch} from "react-redux";
 import { ActivationEmailPage } from "../activation-email";
 import { UserPage } from '../user-page';
+import { fetchUserInfo } from "../../api/user";
+import { ADD_USER_DATA_ACTION } from "../../store/actions";
 
 
 export const App = () => {
+  const dispatch = useDispatch();
 
   const isBlackTheme = useSelector(state => state.isBlackTheme);
+
+  useEffect(() => {
+    // fetchUserInfo().then((response) => {
+    //   localStorage.setItem("isAuth", !!response.id);
+    //   if (response?.id) {
+    //     dispatch(ADD_USER_DATA_ACTION(response));
+    //   }
+    // });
+  }, []);
 
   return (
     <BrowserRouter>

@@ -9,8 +9,6 @@ import { Spinner } from '../spinner';
 
 export const UserPage= () =>{
 
-    const userToken = useSelector((state) => state.token);
-
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
@@ -19,18 +17,16 @@ export const UserPage= () =>{
 
     const user = useSelector((state) => state.user.content);
 
-    console.log(user.content)
     useEffect(() => {
-
-        dispatch(getUserInfoMiddlewareAction(userToken.access));
+            dispatch(getUserInfoMiddlewareAction(navigate));
       }, []);
 
     const handleClickHome = () => {
         navigate("/"); 
       };
 
-      if (!user) {
-        return <Spinner />;
+      if (!user.username) {
+        return <h1>Loading...</h1>
       }
 
     return(

@@ -8,6 +8,7 @@ import { SIGN_UP_MIDDLEWARE_ACTION } from "../../store/actions";
 
 
 export const SignUp = () => {
+  const ctx = useContext(MyContext);
   const navigate = useNavigate();
   const [values, setValues] = useState({ name: "", email: "", password: "", confPass: "", group: "", });
 
@@ -41,8 +42,6 @@ export const SignUp = () => {
     dispatch(SIGN_UP_MIDDLEWARE_ACTION(values, navigate));
     
   };
-
-  const ctx = useContext(MyContext);
 
   return (
     <div className={`signs  ${ctx.isBlackTheme ? "signs_dark" : ""}`}>

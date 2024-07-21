@@ -1,3 +1,5 @@
+import { fetchUserActivation, fetchToken } from "../../api/auth";
+import { fetchUserInfo } from "../../api/user";
 import { postsData } from "../../components/posts/mock-data"
 
 export const CHANGE_THEME = "CHANGE_THEME";
@@ -113,58 +115,21 @@ export const SIGN_UP_MIDDLEWARE_ACTION = ({name, email, password, group}, naviga
 
 export const activationEmailMiddlewareAction = (uid, token) => {
   return (dispatch) => {
-
-    const URL = "https://studapi.teachmeskills.by/auth/users/activation/";
-    const data = { uid, token };
-
-    fetch(URL, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-      });
+    fetchUserActivation(uid, token);
   };
 };
 
-export const authorizationMiddlewareAction = (values) => {
+export const authorizationMiddlewareAction = (values, navigate) => {
   return (dispatch) => {
-    const URL = "https://studapi.teachmeskills.by/auth/jwt/create/";
-
-    fetch(URL, {
-      method: "POST",
-      body: JSON.stringify(values),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
+    fetchToken(values).then((response) =>{
+      fetchUserInfo(navigate).then((response) => dispatch(ADD_USER_DATA_ACTION(response)));
     })
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        dispatch(addTokenAction(json));
-      });
   };
 };
 
 
-export const getUserInfoMiddlewareAction = (token) => {
+export const getUserInfoMiddlewareAction = (navigate) => {
   return (dispatch) => {
-    const URL = "https://studapi.teachmeskills.by/auth/users/me/";
-
-    fetch(URL, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        dispatch(ADD_USER_DATA_ACTION(json));
-      });
+    fetchUserInfo(navigate).then((response) => dispatch(ADD_USER_DATA_ACTION(response)));
   };
 };

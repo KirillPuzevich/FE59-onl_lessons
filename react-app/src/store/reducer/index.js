@@ -181,17 +181,9 @@ export const reducer = (state = initialState, action) => {
         };
     }
     if(action.type === CHANGE_LIKE){
-        console.log({
-            ...state,
-            posts: state.posts.map((post) => {
-              return post.id === action.id
-                ? { ...post, like: !post.like, dislike: false }
-                : post;
-            }),
-          });
         return {
             ...state,
-            posts: state.posts.map((post) => {
+            posts: state.posts.content.map((post) => {
               return post.id === action.id
                 ? { ...post, like: !post.like, dislike: false }
                 : post;
@@ -200,17 +192,9 @@ export const reducer = (state = initialState, action) => {
     }
 
     if(action.type === CHANGE_DISLIKE){
-        console.log({
-            ...state,
-            posts: state.posts.map((post) => {
-              return post.id === action.id
-                ? { ...post, dislike: !post.dislike, like: false }
-                : post;
-            }),
-          });
         return {
             ...state,
-            posts: state.posts.map((post) => {
+            posts: state.posts.content.map((post) => {
               return post.id === action.id
                 ? { ...post, dislike: !post.dislike, like: false }
                 : post;
@@ -219,17 +203,9 @@ export const reducer = (state = initialState, action) => {
     }
 
     if(action.type === CHANGE_SAVE){
-        console.log({
-            ...state,
-            posts: state.posts.map((post) => {
-              return post.id === action.id
-                ? { ...post, save: !post.save}
-                : post;
-            }),
-          });
         return {
             ...state,
-            posts: state.posts.map((post) => {
+            posts: state.posts.content.map((post) => {
               return post.id === action.id
                 ? { ...post, save: !post.save}
                 : post;
@@ -258,7 +234,7 @@ export const reducer = (state = initialState, action) => {
 
     if(action.type === RECEIVED_USER_DATA ){
 
-        const isError = !action.user.id;
+        const isError = !action.user?.id;
 
         return {
             ...state,

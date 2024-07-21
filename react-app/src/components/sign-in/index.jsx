@@ -7,7 +7,8 @@ import { useDispatch } from "react-redux";
 import { authorizationMiddlewareAction } from "../../store/actions";
 // Pentqwq132
 
-export const SignIn = ({ setPage }) => {
+export const SignIn = () => {
+  const ctx = useContext(MyContext);
 
   const dispatch = useDispatch();
 
@@ -24,14 +25,9 @@ export const SignIn = ({ setPage }) => {
   };
 
   const handleSave = () => {
-    dispatch(authorizationMiddlewareAction(values))
+    dispatch(authorizationMiddlewareAction(values, navigate));
+    // navigate("/success"); 
   };
-
-  const handleClickSign = () => {
-    navigate("/success"); 
-  };
-
-  const ctx = useContext(MyContext);
 
   return (
     <div className={`sign  ${ctx.isBlackTheme ? "sign_dark" : ""}`}>
@@ -58,7 +54,7 @@ export const SignIn = ({ setPage }) => {
             onChange={handleChangePass}
           />
           <button className="sign__forgot">Forgot password?</button>
-          <button className="sign__save" onClick={() => { handleSave(); handleClickSign(); }}>
+          <button className="sign__save" onClick={handleSave}>
             Sign In
           </button>
           <div className="sign__signup">
