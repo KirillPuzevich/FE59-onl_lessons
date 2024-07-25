@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import { MyContext } from "../hooks/context.hook";
-import styles from "./index.css";
+import styles from "./styles.scss";
 import { Link } from "react-router-dom";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authorizationMiddlewareAction } from "../../store/actions";
 // Pentqwq132
@@ -26,13 +26,15 @@ export const SignIn = () => {
 
   const handleSave = () => {
     dispatch(authorizationMiddlewareAction(values, navigate));
-    // navigate("/success"); 
+    // navigate("/success");
   };
 
   return (
     <div className={`sign  ${ctx.isBlackTheme ? "sign_dark" : ""}`}>
       <div className="container">
-      <Link to={"/"} className="sign__btn">Back to home</Link>
+        <Link to={"/"} className="sign__btn">
+          Back to home
+        </Link>
         <h1 className="sign__title">Sing in </h1>
         <div className="sign__wrapper">
           <label htmlFor="signEmail">Email</label>
@@ -59,7 +61,9 @@ export const SignIn = () => {
           </button>
           <div className="sign__signup">
             Don't have an account?
-            <Link to={"/signUp"} className="sign__signup_btn">Sign Up</Link>
+            <Link to={"/signUp"} className="sign__signup_btn">
+              Sign Up
+            </Link>
           </div>
         </div>
       </div>

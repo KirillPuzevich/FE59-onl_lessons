@@ -1,4 +1,4 @@
-.user {
+.registration {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,16 +45,17 @@
     }
 }
 
-.user_dark .user__btn {
+
+.registration_dark .registration__btn {
     background-color: rgb(73, 73, 73);
     color: white;
 }
 
-.user_dark .user__wrapper {
+.registration_dark .registration__wrapper {
     background-color: rgb(73, 73, 73);
 }
 
-.user_dark .user__content_text,
-.user .user__title {
+.registration_dark .registration__content_text,
+.registration_dark .registration__title {
     color: white;
 }

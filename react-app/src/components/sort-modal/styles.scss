@@ -1,0 +1,31 @@
+.modal {
+    position: fixed;
+    inset: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0000008b;
+
+    &__content {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+
+        &-btn{
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px;
+            margin-bottom: 10px;
+
+            &_field{
+                border-radius: 5px;
+                padding: 5px;
+            }
+        }
+
+      }
+  }
+  
+  
+
+  

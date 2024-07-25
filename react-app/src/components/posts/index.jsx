@@ -1,34 +1,31 @@
 import { useEffect, useState, useContext } from "react";
 import { postsData } from "./mock-data.js";
 import { MyContext } from "../hooks/context.hook";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import { Post } from "../post";
-import styles from "./index.css";
-import {useDispatch} from "react-redux";
+import styles from "./styles.scss";
+import { useDispatch } from "react-redux";
 import { PostDetails } from "../post-details/index.jsx";
-import { useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { PostPreview } from "../post-preview/index.jsx";
 import { ImgPreview } from "../img-preview/index.jsx";
-import { 
+import {
   ADD_POSTS_ACTION,
   REQUEST_POSTS_ACTION,
   CHANGE_TAB_ACTION,
   ADD_MIDDLEWARE_ACTION,
+  setPage,
 } from "../../store/actions";
 import { Spinner } from "../spinner/index.jsx";
+import { PostsNavBar } from "../posts-nav-bar/index.jsx";
+import { NoSearchResult } from "../no-search-result/index.jsx";
 
+export const limit = 12;
 
 export const Posts = () => {
-
-  const {category} = useParams();
+  const { category } = useParams();
 
   const navigate = useNavigate();
-
-  // const [filterValue, setFilterValue] = useState(category);
-
-  const [searchPost, setSearchPost] = useState("");
-
-  const isSearch = searchPost === "";
 
   const dispatch = useDispatch();
 
@@ -42,74 +39,52 @@ export const Posts = () => {
 
   const tab = useSelector((state) => state.tab);
 
-  const handleSearch = (event) => {
-    setSearchPost(event.target.value);
-  };
+  const searchValue = useSelector((state) => state.searchValue);
 
-  const handleClickAll = (category) => {
-    return () => {
-      dispatch(CHANGE_TAB_ACTION(category))
-      navigate(`/blog/${category}`)
-    }
-  }
+  const page = useSelector((state) => state.page);
+
+  const order = useSelector((state) => state.order);
 
   useEffect(() => {
-    dispatch(CHANGE_TAB_ACTION(category))
-
-    dispatch(ADD_MIDDLEWARE_ACTION());
+    dispatch(ADD_MIDDLEWARE_ACTION(null, null, limit, page));
   }, []);
 
-  if (posts.loading || !posts.loaded){
-    return <Spinner/>
-  }
-  
+  const handleSearch = (searchValue) => {
+    dispatch(ADD_MIDDLEWARE_ACTION(searchValue, null, limit, page));
+  };
+
+  const handleLoadMore = () => {
+    const newPage = page + 1; 
+    dispatch(setPage(newPage)); 
+    dispatch(ADD_MIDDLEWARE_ACTION(searchValue, order, limit, newPage));
+  };
+
   return (
     <section className={`posts ${ctx.isBlackTheme ? "posts_dark" : ""}`}>
       <div className="container">
         <h1 className="posts__title">Blog</h1>
-        <div className="posts__tabs">
-          <button className="posts__tabs_item" onClick={handleClickAll("all")}>All</button>
-          <button className="posts__tabs_item" onClick={handleClickAll("favorites")}>My Favorites</button>
-          <button className="posts__tabs_item" onClick={handleClickAll("popular")}>Popular</button>
-            <div className="posts__search">
-              <input
-                  type="text"
-                  placeholder="Поиск"
-                  value={searchPost}
-                  onChange={handleSearch}
+        <PostsNavBar handleSearch={handleSearch} />
+        <div className={"posts__wrapper"}>
+          {posts.content.map((item, index) => {
+            return (
+              <Post
+                post={item}
+                img={item}
+                index={index}
+                key={index}
+                size={index > 5 ? "small" : "large"}
               />
-            </div>
-        </div>
-        <div className={!isSearch ? "posts_wrapper_flex" : (tab === "all" ? "posts__wrapper" : "posts_wrapper_flex")}>
-        {posts.content.reduce((result, post, index) => {
-          if ((tab === "all") ||
-              (tab === "favorites" && post.favorite) ||
-              (tab === "popular" && post.popular)) {
-              
-              if (post.title.toLowerCase().includes(searchPost.toLowerCase())) {
-                  let size = "large";
-                  if (index > 5 && isSearch) {
-                      size = "small";
-                  }
-
-                  result.push(
-                      <Post
-                          post={post}
-                          img={post} 
-                          index={index}
-                          key={index}
-                          size={(tab === "favorites" || tab === "popular") ? "large" : size} 
-                      />
-                  );
-              }
-          }
-      return result; 
-      }, [])};
+            );
+          })}
+          </div> 
+        {!posts.content.length && !posts.loading && <NoSearchResult/>}
+        {posts.loading && <Spinner />}
+        <div className="posts__load-more">
+          <button className="posts__load-more-btn" onClick={handleLoadMore}>Load more</button>
         </div>
       </div>
-      {post && <PostPreview post={post}/>}
-      {img && <ImgPreview post={img}/>}
-      
+      {post && <PostPreview post={post} />}
+      {img && <ImgPreview post={img} />}
     </section>
   );
 };

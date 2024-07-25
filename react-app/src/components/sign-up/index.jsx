@@ -1,18 +1,23 @@
 import { useState, useContext } from "react";
 import { MyContext } from "../hooks/context.hook";
-import styles from "./index.css";
+import styles from "./styles.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { SIGN_UP_MIDDLEWARE_ACTION } from "../../store/actions";
 
-
 export const SignUp = () => {
   const ctx = useContext(MyContext);
   const navigate = useNavigate();
-  const [values, setValues] = useState({ name: "", email: "", password: "", confPass: "", group: "", });
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confPass: "",
+    group: "",
+  });
 
-  const user = useSelector((state) => state.user)
+  const user = useSelector((state) => state.user);
 
   console.log(user);
 
@@ -40,13 +45,14 @@ export const SignUp = () => {
 
   const handleSave = () => {
     dispatch(SIGN_UP_MIDDLEWARE_ACTION(values, navigate));
-    
   };
 
   return (
     <div className={`signs  ${ctx.isBlackTheme ? "signs_dark" : ""}`}>
       <div className="container">
-        <Link to={"/"} className="signs__btn">Back to Home</Link>
+        <Link to={"/"} className="signs__btn">
+          Back to Home
+        </Link>
         <h1 className="signs__title">Sing Up </h1>
         <div className="signs__wrapper">
           <label htmlFor="signName">Name</label>
@@ -85,7 +91,7 @@ export const SignUp = () => {
           {user.errors.password && (
             <p className="signs__error">{user.errors.password.join(", ")}</p>
           )}
-          
+
           <label htmlFor="signConfPass">Group</label>
           <input
             type="number"
@@ -100,11 +106,12 @@ export const SignUp = () => {
           </button>
           <div className="signs__signup">
             Already have an account?
-            <Link to={"/signIn"} className="signs__signup_btn">Sign In</Link>
+            <Link to={"/signIn"} className="signs__signup_btn">
+              Sign In
+            </Link>
           </div>
         </div>
       </div>
     </div>
-
   );
 };

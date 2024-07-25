@@ -1,4 +1,4 @@
-.user {
+.success {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,16 +45,16 @@
     }
 }
 
-.user_dark .user__btn {
+.success_dark .success__btn {
     background-color: rgb(73, 73, 73);
     color: white;
 }
 
-.user_dark .user__wrapper {
+.success_dark .success__wrapper {
     background-color: rgb(73, 73, 73);
 }
 
-.user_dark .user__content_text,
-.user .user__title {
+.success_dark .success__content_text,
+.success_dark .success__title {
     color: white;
 }

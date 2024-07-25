@@ -1,0 +1,124 @@
+.posts {
+  padding-top: 35px;
+
+
+  &__title {
+    margin-bottom: 20px;
+    font-size: 35px;
+    margin-left: 40px;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas:
+      "post-0 post-1 post-2"
+      "post-0 post-1 post-3"
+      "post-4 post-5 post-6"
+      "post-4 post-5 post-7"
+      "post-8 post-9 post-10"
+      "post-8 post-9 post-11";
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-bottom: 20px;
+
+    &_flex {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
+  }
+
+  &__load-more {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 30px 0;
+
+    &-btn {
+      padding: 25px;
+      border: none;
+      border-radius: 15px;
+      font-size: 30px;
+      cursor: pointer;
+      transition: background-color 0.2s linear;
+
+      &:hover {
+        background-color: antiquewhite;
+      }
+    }
+  }
+
+}
+
+
+.posts__tabs {
+  display: flex;
+  margin-bottom: 20px;
+  margin-left: 40px;
+
+  &_item {
+    margin-right: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    position: relative;
+    border: 0px;
+    background-color: #fff;
+
+    &:hover::after {
+      content: "";
+      background-color: #babbc5;
+      width: 100px;
+      height: 3px;
+      transition: all .3s;
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translate(-50%);
+    }
+  }
+
+}
+
+.posts__elements{
+  display: flex;
+  gap: 10px;
+
+  &-btn{
+    padding: 5px;
+    background-color: blue;
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+  }
+}
+
+.posts__search{
+  display: flex;
+  gap: 10px;
+
+  &-btn{
+    padding: 5px;
+    background-color: blue;
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+  }
+
+  &-input{
+    border-radius: 4px;
+  }
+}
+
+
+
+.posts_dark .posts__title {
+  color: white;
+}
+
+.posts_dark .posts__tabs_item {
+  background-color: rgb(73, 73, 73);
+  color: white;
+}
+

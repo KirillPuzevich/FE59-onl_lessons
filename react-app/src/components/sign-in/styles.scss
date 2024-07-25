@@ -1,0 +1,113 @@
+.sign {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+
+    &__btn {
+        cursor: pointer;
+        border: 0;
+        background-color: #fff;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__wrapper {
+        width: 400px;
+        padding: 25px;
+        border: 1px solid;
+        border-radius: 3px;
+        margin-bottom: 20px;
+    }
+
+    &__title {
+        margin-bottom: 25px;
+    }
+
+    &__input {
+        border-radius: 5px;
+        margin-bottom: 15px;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    &__forgot {
+        border: 0;
+        background-color: #fff;
+        margin-bottom: 30px;
+        cursor: pointer;
+        font-size: 16px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__save {
+        width: 100%;
+        background-color: darkblue;
+        padding: 15px;
+        border: 0;
+        color: #fff;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+    &__signup {
+        display: flex;
+        justify-content: center;
+
+        &_btn {
+            border: 0;
+            background-color: #fff;
+            color: blue;
+            cursor: pointer;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+.sign_dark .sign__btn,
+.sign_dark .sign__forgot {
+    background-color: rgb(73, 73, 73);
+    color: white;
+}
+
+.sign_dark .sign__title {
+    color: white;
+}
+
+.sign_dark .sign__wrapper {
+    background-color: rgb(73, 73, 73);
+}
+
+.sign_dark .sign__input {
+    border: none;
+}
+
+.sign_dark label {
+    color: white;
+}
+
+.sign_dark .sign__signup_btn {
+    background-color: rgb(73, 73, 73);
+    color: rgb(0, 0, 52);
+}
+
+.sign_dark .sign__signup {
+    color: white;
+}

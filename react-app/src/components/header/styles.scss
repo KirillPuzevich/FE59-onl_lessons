@@ -1,0 +1,44 @@
+.header {
+  width: 100%;
+  background-color: #daeeee;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+  }
+
+  &__logo {
+    width: 25px;
+    height: 25px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    margin-right: 15px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    color: black;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+
+    &:hover {
+      color: blue;
+      transition: .3s;
+    }
+  }
+}
