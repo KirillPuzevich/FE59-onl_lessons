@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import like from "../img/like.svg";
-import dislike from "../img/dislike.svg";
-import { MyContext } from "../hooks/context.hook";
-import save from "../img/save.svg";
-import options from "../img/options.png";
+import like from "../../components/img/like.svg";
+import dislike from "../../components/img/dislike.svg";
+import { MyContext } from "../../components/hooks/context.hook";
+import save from "../../components/img/save.svg";
+import options from "../../components/img/options.png";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.scss";
 import { postsData } from "../posts/mock-data";
 import { useParams, useNavigate } from "react-router-dom";
-import { Spinner } from "../spinner";
+import { Spinner } from "../../components/spinner";
 import {
   POST_MIDDLEWARE_ACTION,
   CHANGE_LIKE_ACTION,

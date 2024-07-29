@@ -1,6 +1,6 @@
 import { fetchUserActivation, fetchToken } from "../../api/auth";
 import { fetchUserInfo } from "../../api/user";
-import { postsData } from "../../components/posts/mock-data";
+import { postsData } from "../../pages/posts/mock-data";
 
 export const CHANGE_THEME = "CHANGE_THEME";
 export const ADD_POST = "ADD_POST";
@@ -21,6 +21,10 @@ export const RECEIVED_TOKEN = "RECEIVED_TOKEN";
 export const SET_SEARCH_VALUE = "SET_SEARCH_VALUE";
 export const SORTED_ORDER = "SORTED_ORDER";
 export const SET_PAGE = 'SET_PAGE';
+export const SET_POST_COUNT = 'SET_POST_COUNT'
+export const LOADING_IMG = 'LOADING_IMG'
+export const SET_ERRORS = 'SET_ERRORS';
+
 
 
 export const CHANGE_THEME_ACTION = { type: CHANGE_THEME };
@@ -36,9 +40,21 @@ export const ADD_POSTS_ACTION = (posts) => ({
   type: RECEIVED_POSTS,
   payload: posts,
 });
+export const loadingImage = (image) => ({
+  type: LOADING_IMG,
+  payload: image,
+});
+export const setPostCount = (count) => ({
+  type: SET_POST_COUNT,
+  payload: count,
+});
 export const setPage = (page) => ({
   type: SET_PAGE,
   payload: page,
+});
+export const setErrors = (errors) => ({
+  type: SET_ERRORS,
+  payload: errors,
 });
 export const setSearchValue = (value) => ({
   type: SET_SEARCH_VALUE,
@@ -98,8 +114,8 @@ export const ADD_MIDDLEWARE_ACTION = (searchValue, orderValue, limit, page) => {
 
     fetch(URL)
       .then((response) => response.json())
-      .then(({ results }) => {
-        dispatch(ADD_POSTS_ACTION(results));
+      .then(({ results, count}) => {
+        dispatch(ADD_POSTS_ACTION({ results, count }));
       })
       .catch((e) => console.log(e));
   };

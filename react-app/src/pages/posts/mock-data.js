@@ -1,16 +1,16 @@
-import fon from "../img/posts.jpg";
-import post1 from "../img/post1.jpg";
-import post2 from "../img/post2.jpg";
-import post3 from "../img/post3.jpg";
-import post4 from "../img/post4.jpg";
-import post5 from "../img/post5.jpg";
-import post6 from "../img/post6.jpg";
-import post7 from "../img/post7.jpg";
-import post8 from "../img/post8.jpg";
-import post9 from "../img/post9.jpg";
-import post10 from "../img/post10.jpg";
-import post11 from "../img/post11.jpg";
-import post12 from "../img/post12.jpg";
+import fon from "../../components/img/posts.jpg";
+import post1 from "../../components/img/post1.jpg";
+import post2 from "../../components/img/post2.jpg";
+import post3 from "../../components/img/post3.jpg";
+import post4 from "../../components/img/post4.jpg";
+import post5 from "../../components/img/post5.jpg";
+import post6 from "../../components/img/post6.jpg";
+import post7 from "../../components/img/post7.jpg";
+import post8 from "../../components/img/post8.jpg";
+import post9 from "../../components/img/post9.jpg";
+import post10 from "../../components/img/post10.jpg";
+import post11 from "../../components/img/post11.jpg";
+import post12 from "../../components/img/post12.jpg";
 
 export const postsData = [
   {

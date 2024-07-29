@@ -1,4 +1,4 @@
-import home from '../img/home.jpg'
+import home from '../../components/img/home.jpg'
 
 export const Home = () => {
  return (

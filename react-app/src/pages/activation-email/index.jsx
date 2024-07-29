@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import { activationEmailMiddlewareAction } from "../../store/actions";
-import { Spinner } from "../spinner";
+import { Spinner } from "../../components/spinner";
 import "./styles.scss";
 
 export const ActivationEmailPage = () => {

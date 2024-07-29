@@ -18,6 +18,9 @@ import {
   SET_SEARCH_VALUE,
   SORTED_ORDER,
   SET_PAGE,
+  SET_POST_COUNT,
+  LOADING_IMG,
+  SET_ERRORS,
 } from "../actions";
 
 const initialState = {
@@ -25,7 +28,7 @@ const initialState = {
   post: null,
   img: null,
   searchValue: '',
-  order: 'title',
+  order: 'date',
   posts: {
     content: [],
     count: 0,
@@ -47,6 +50,8 @@ const initialState = {
   },
   page: 1,
   token: null,
+  image:[],
+  errors:{},
 };
 
 export const reducer = (state = initialState, action) => {
@@ -112,7 +117,8 @@ export const reducer = (state = initialState, action) => {
       ...state,
       posts: {
         ...state.posts,
-        content: action.payload,
+        content: action.payload.results, 
+        count: action.payload.count,
         loading: false,
         loaded: true,
       },
@@ -210,9 +216,14 @@ export const reducer = (state = initialState, action) => {
   if (action.type === SET_PAGE){
     return { ...state, page: action.payload };
   }
-      
 
-  
+  if (action.type === LOADING_IMG){
+    return { ...state, image: action.payload };
+  }
+
+  if (action.type === SET_ERRORS){
+    return { ...state, errors: action.payload };
+  }
 
   return state;
 };

@@ -1,24 +1,26 @@
 import { useEffect, useState, useContext } from "react";
 import { postsData } from "./mock-data.js";
-import { MyContext } from "../hooks/context.hook";
+import { MyContext } from "../../components/hooks/context.hook.jsx";
 import { useSelector } from "react-redux";
-import { Post } from "../post";
+import { Post } from "../../components/post/index.jsx";
 import styles from "./styles.scss";
 import { useDispatch } from "react-redux";
 import { PostDetails } from "../post-details/index.jsx";
 import { useNavigate, useParams } from "react-router-dom";
-import { PostPreview } from "../post-preview/index.jsx";
-import { ImgPreview } from "../img-preview/index.jsx";
+import { PostPreview } from "../../components/post-preview/index.jsx";
+import { ImgPreview } from "../../components/img-preview/index.jsx";
 import {
   ADD_POSTS_ACTION,
   REQUEST_POSTS_ACTION,
   CHANGE_TAB_ACTION,
   ADD_MIDDLEWARE_ACTION,
   setPage,
-} from "../../store/actions";
-import { Spinner } from "../spinner/index.jsx";
-import { PostsNavBar } from "../posts-nav-bar/index.jsx";
-import { NoSearchResult } from "../no-search-result/index.jsx";
+  setPostCount,
+} from "../../store/actions/index.js";
+import { Spinner } from "../../components/spinner/index.jsx";
+import { PostsNavBar } from "../../components/posts-nav-bar/index.jsx";
+import { Pagination } from "../../components/pagination/index.jsx";
+import { NoSearchResult } from "../../components/no-search-result/index.jsx";
 
 export const limit = 12;
 
@@ -37,6 +39,8 @@ export const Posts = () => {
 
   const posts = useSelector((state) => state.posts);
 
+  const count = useSelector((state) => state.posts.count);
+
   const tab = useSelector((state) => state.tab);
 
   const searchValue = useSelector((state) => state.searchValue);
@@ -45,17 +49,23 @@ export const Posts = () => {
 
   const order = useSelector((state) => state.order);
 
+  console.log(posts);
   useEffect(() => {
-    dispatch(ADD_MIDDLEWARE_ACTION(null, null, limit, page));
+    dispatch(ADD_MIDDLEWARE_ACTION(null, order, limit, page, count));
   }, []);
 
   const handleSearch = (searchValue) => {
     dispatch(ADD_MIDDLEWARE_ACTION(searchValue, null, limit, page));
   };
 
-  const handleLoadMore = () => {
-    const newPage = page + 1; 
-    dispatch(setPage(newPage)); 
+  // const handleLoadMore = () => {
+  //   const newPage = page + 1;
+  //   dispatch(setPage(newPage));
+  //   dispatch(ADD_MIDDLEWARE_ACTION(searchValue, order, limit, newPage));
+  // };
+
+  const handleChangePage = (newPage) => {
+    dispatch(setPage(newPage));
     dispatch(ADD_MIDDLEWARE_ACTION(searchValue, order, limit, newPage));
   };
 
@@ -76,12 +86,15 @@ export const Posts = () => {
               />
             );
           })}
-          </div> 
-        {!posts.content.length && !posts.loading && <NoSearchResult/>}
-        {posts.loading && <Spinner />}
-        <div className="posts__load-more">
-          <button className="posts__load-more-btn" onClick={handleLoadMore}>Load more</button>
         </div>
+        {!posts.content.length && !posts.loading && <NoSearchResult />}
+        <Pagination limit={limit} handleChangePage={handleChangePage} />
+        {posts.loading && <Spinner />}
+        {/* {page * (limit + 1) <= count && (
+          <div className="posts__load-more" onClick={handleLoadMore}>
+            <button className="posts__load-more-btn">Load more</button>
+          </div>
+        )} */}
       </div>
       {post && <PostPreview post={post} />}
       {img && <ImgPreview post={img} />}

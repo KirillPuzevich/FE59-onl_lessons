@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { MyContext } from "../hooks/context.hook";
+import { MyContext } from "../../components/hooks/context.hook";
 import styles from "./styles.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

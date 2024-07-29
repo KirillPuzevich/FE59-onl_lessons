@@ -39,6 +39,11 @@ export const Header = () => {
                 </Link>
               </li>
               <li className="header__item">
+                <Link to="create-post" className="header__link">
+                  Create post
+                </Link>
+              </li>
+              <li className="header__item">
                 {isAuth ? (
                   <Link to="userPage" className="header__logo">
                     <img className="header__logo" src={person} alt="" />

@@ -2,20 +2,21 @@ import React, { useState, useEffect, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styles from "./styles.scss";
 import { Header } from "../header";
-import { Posts } from "../posts";
-import { SignIn } from "../sign-in";
+import { Posts } from "../../pages/posts";
+import { SignIn } from "../../pages/sign-in";
 import { Success } from "../success";
-import { Home } from "../home";
-import { SignUp } from "../sign-up";
+import { Home } from "../../pages/home";
+import { SignUp } from "../../pages/sign-up";
 import { MyContext } from "../hooks/context.hook";
 import { Registration } from "../registration";
-import { NotFound } from "../not-found";
-import { PostDetails } from "../post-details";
+import { NotFound } from "../../pages/not-found";
+import { PostDetails } from "../../pages/post-details";
 import { useSelector, useDispatch } from "react-redux";
-import { ActivationEmailPage } from "../activation-email";
+import { ActivationEmailPage } from "../../pages/activation-email";
 import { UserPage } from "../user-page";
 import { fetchUserInfo } from "../../api/user";
 import { ADD_USER_DATA_ACTION } from "../../store/actions";
+import {CreatePost } from "../../pages/create-post";
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -61,6 +62,10 @@ export const App = () => {
             <Route
               path="userPage"
               element={<UserPage isBlackTheme={isBlackTheme} />}
+            />
+            <Route
+              path="create-post"
+              element={<CreatePost isBlackTheme={isBlackTheme} />}
             />
             <Route
               path="regist"

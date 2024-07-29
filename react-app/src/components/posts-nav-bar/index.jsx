@@ -5,9 +5,10 @@ import {
   CHANGE_TAB_ACTION,
   setSearchValue,
   ADD_MIDDLEWARE_ACTION,
+  setSortedOrder,
 } from "../../store/actions";
 import { SortModal } from "../sort-modal/index.jsx";
-import { limit } from "../posts/index.jsx";
+import { limit } from "../../pages/posts";
 
 export const PostsNavBar = ({ handleSearch }) => {
   const searchValue = useSelector((state) => state.searchValue);
@@ -24,6 +25,7 @@ export const PostsNavBar = ({ handleSearch }) => {
 
   const handleOrder = (orderValue) => {
     dispatch(ADD_MIDDLEWARE_ACTION(searchValue, orderValue, limit, page));
+    dispatch(setSortedOrder(orderValue));
   };
 
   const handleClickAll = (category) => {

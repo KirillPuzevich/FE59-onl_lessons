@@ -1,0 +1,82 @@
+
+.create-post {
+    margin: 30px;
+  
+    &__home {
+      margin-bottom: 25px;
+    }
+  
+    &__title {
+      margin-bottom: 30px;
+    }
+  
+    &__form {
+    }
+  
+    &__input {
+      display: block;
+      width: 100%;
+  
+      &-group {
+        margin-bottom: 30px;
+      }
+    }
+  
+    &__uploading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  
+    &__actions {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    &__btn {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 15px;
+      transition: color 0.2s linear;
+      cursor: pointer;
+    }
+  
+    &__delete {
+      background-color: inherit;
+      color: #ff0000;
+  
+      &:hover {
+        color: #ff0000ca;
+      }
+    }
+  
+    &__cancel {
+      background-color: #d5d5d5;
+      color: #000000;
+      transition: background-color 0.2s linear;
+      margin-right: 15px;
+  
+      &:hover {
+        background-color: #9c9c9c;
+      }
+    }
+  
+    &__save {
+      background-color: #0000ff;
+      color: #ffffff;
+      transition: background-color 0.2s linear;
+  
+      &:hover {
+        background-color: #6969fe;
+      }
+    }
+  
+    &__actions-right {
+    }
+  
+    &__error {
+      color: #ff0000;
+      font-size: 12px;
+    }
+  }
+  
