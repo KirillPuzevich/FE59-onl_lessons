@@ -23,7 +23,7 @@ export const SORTED_ORDER = "SORTED_ORDER";
 export const SET_PAGE = 'SET_PAGE';
 export const SET_POST_COUNT = 'SET_POST_COUNT'
 export const LOADING_IMG = 'LOADING_IMG'
-export const SET_ERRORS = 'SET_ERRORS';
+export const SET_CREATE_ERRORS = 'SET_CREATE_ERRORS';
 
 
 
@@ -52,9 +52,9 @@ export const setPage = (page) => ({
   type: SET_PAGE,
   payload: page,
 });
-export const setErrors = (errors) => ({
-  type: SET_ERRORS,
-  payload: errors,
+export const setCreateErrors = (createPostErrors) => ({
+  type: SET_CREATE_ERRORS,
+  payload: createPostErrors,
 });
 export const setSearchValue = (value) => ({
   type: SET_SEARCH_VALUE,
@@ -102,8 +102,8 @@ export const POST_MIDDLEWARE_ACTION = (postId, navigate) => {
   };
 };
 
-export const ADD_MIDDLEWARE_ACTION = (searchValue, orderValue, limit, page) => {
-  return (dispatch) => {
+export const ADD_MIDDLEWARE_ACTION = (searchValue, orderValue, limit, page, isLoadMore) => {
+  return (dispatch, getState) => {
     dispatch(REQUEST_POSTS_ACTION);
     const offset = (page - 1) * limit;
     const URL = `https://studapi.teachmeskills.by/blog/posts/?limit=${limit}&offset=${offset}${
@@ -115,7 +115,12 @@ export const ADD_MIDDLEWARE_ACTION = (searchValue, orderValue, limit, page) => {
     fetch(URL)
       .then((response) => response.json())
       .then(({ results, count}) => {
-        dispatch(ADD_POSTS_ACTION({ results, count }));
+        const state = getState()
+
+        const newPost = isLoadMore
+        ? [...state.posts.content, ...results]
+        : results
+        dispatch(ADD_POSTS_ACTION({ results: newPost, count }));
       })
       .catch((e) => console.log(e));
   };

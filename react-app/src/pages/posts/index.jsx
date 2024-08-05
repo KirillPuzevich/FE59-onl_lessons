@@ -55,14 +55,14 @@ export const Posts = () => {
   }, []);
 
   const handleSearch = (searchValue) => {
-    dispatch(ADD_MIDDLEWARE_ACTION(searchValue, null, limit, page));
+    dispatch(ADD_MIDDLEWARE_ACTION(searchValue, order, limit, page));
   };
 
-  // const handleLoadMore = () => {
-  //   const newPage = page + 1;
-  //   dispatch(setPage(newPage));
-  //   dispatch(ADD_MIDDLEWARE_ACTION(searchValue, order, limit, newPage));
-  // };
+  const handleLoadMore = () => {
+    const newPage = page + 1;
+    dispatch(setPage(newPage));
+    dispatch(ADD_MIDDLEWARE_ACTION(searchValue, order, limit, newPage, true));
+  };
 
   const handleChangePage = (newPage) => {
     dispatch(setPage(newPage));
@@ -87,14 +87,29 @@ export const Posts = () => {
             );
           })}
         </div>
+        {/* {posts.content.map((item, index) => {
+            return (
+              <div className="posts__wrapper">
+                {item.map((post, index) => {
+                  return(<Post
+                    post={post}
+                    img={post}
+                    index={index}
+                    key={index}
+                    size={index > 5 ? "small" : "large"}
+                  />) 
+                })}
+              </div> 
+            );
+          })} */}
         {!posts.content.length && !posts.loading && <NoSearchResult />}
         <Pagination limit={limit} handleChangePage={handleChangePage} />
         {posts.loading && <Spinner />}
-        {/* {page * (limit + 1) <= count && (
+        {page * (limit + 1) <= count && (
           <div className="posts__load-more" onClick={handleLoadMore}>
             <button className="posts__load-more-btn">Load more</button>
           </div>
-        )} */}
+        )}
       </div>
       {post && <PostPreview post={post} />}
       {img && <ImgPreview post={img} />}

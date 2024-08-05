@@ -4,10 +4,7 @@ import ImageUploading from "react-images-uploading";
 import Validator from "fastest-validator";
 import { createPost } from "../../api/posts";
 import { useSelector, useDispatch } from "react-redux";
-import {
-    loadingImage,
-    setErrors,
-  } from "../../store/actions/index.js";
+import { loadingImage, setCreateErrors } from "../../store/actions/index.js";
 import "./styles.scss";
 
 const validationSchema = {
@@ -33,11 +30,10 @@ const checkValidationData = (data) => {
 export const CreatePost = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const images = useSelector((state) => state.image);
 
-  const errors = useSelector((state) => state.errors);
-
+  const errors = useSelector((state) => state.createPostErrors.errors);
 
   const goHome = () => {
     navigate("/");
@@ -65,15 +61,17 @@ export const CreatePost = () => {
         }
       });
     } else {
-      dispatch(setErrors(
-        result.reduce(
-          (result, { field, message }) => ({
-            ...result,
-            [field]: message,
-          }),
-          {}
+      dispatch(
+        setCreateErrors(
+          result.reduce(
+            (result, { field, message }) => ({
+              ...result,
+              [field]: message,
+            }),
+            {}
+          )
         )
-      ));
+      );
     }
   };
 

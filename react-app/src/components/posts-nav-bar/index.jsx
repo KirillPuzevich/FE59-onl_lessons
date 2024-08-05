@@ -24,8 +24,9 @@ export const PostsNavBar = ({ handleSearch }) => {
   };
 
   const handleOrder = (orderValue) => {
-    dispatch(ADD_MIDDLEWARE_ACTION(searchValue, orderValue, limit, page));
     dispatch(setSortedOrder(orderValue));
+    dispatch(ADD_MIDDLEWARE_ACTION(searchValue, orderValue, limit, page));
+    
   };
 
   const handleClickAll = (category) => {

@@ -20,15 +20,15 @@ import {
   SET_PAGE,
   SET_POST_COUNT,
   LOADING_IMG,
-  SET_ERRORS,
+  SET_CREATE_ERRORS,
 } from "../actions";
 
 const initialState = {
   isBlackTheme: false,
   post: null,
   img: null,
-  searchValue: '',
-  order: 'date',
+  searchValue: "",
+  order: "date",
   posts: {
     content: [],
     count: 0,
@@ -50,8 +50,10 @@ const initialState = {
   },
   page: 1,
   token: null,
-  image:[],
-  errors:{},
+  image: [],
+  createPostErrors: {
+    errors: {},
+  },
 };
 
 export const reducer = (state = initialState, action) => {
@@ -64,7 +66,6 @@ export const reducer = (state = initialState, action) => {
   }
 
   if (action.type === ADD_POST) {
-
     return {
       ...state,
       post: action.payload,
@@ -117,7 +118,7 @@ export const reducer = (state = initialState, action) => {
       ...state,
       posts: {
         ...state.posts,
-        content: action.payload.results, 
+        content: action.payload.results,
         count: action.payload.count,
         loading: false,
         loaded: true,
@@ -205,24 +206,29 @@ export const reducer = (state = initialState, action) => {
       token: action.payload,
     };
   }
-  if (action.type === SET_SEARCH_VALUE){
+  if (action.type === SET_SEARCH_VALUE) {
     return { ...state, searchValue: action.payload };
   }
 
-  if (action.type === SORTED_ORDER){
+  if (action.type === SORTED_ORDER) {
     return { ...state, order: action.payload };
   }
-  
-  if (action.type === SET_PAGE){
+
+  if (action.type === SET_PAGE) {
     return { ...state, page: action.payload };
   }
 
-  if (action.type === LOADING_IMG){
+  if (action.type === LOADING_IMG) {
     return { ...state, image: action.payload };
   }
 
-  if (action.type === SET_ERRORS){
-    return { ...state, errors: action.payload };
+  if (action.type === SET_CREATE_ERRORS) {
+    return {
+      ...state,
+      createPostErrors: {
+        errors: action.payload,
+      },
+    };
   }
 
   return state;
